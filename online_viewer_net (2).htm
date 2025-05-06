@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=3.0">
+    <title>Website Profesional - Trade Finance BJB Syariah</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Basic body styling */
+        body {
+            font-family: 'Open Sans', sans-serif; /* Ensures consistent font */
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.7; /* Consistent line height */
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            font-size: 16px; /* Set base font size for easier relative sizing */
+        }
+
+        /* Header styling */
+        header {
+            background-color: #003366;
+            padding: 1.5em 1em 0 1em;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        header .header-content {
+             padding-bottom: 1em;
+             width: 100%;
+             background-color: #003366;
+        }
+
+        header .logo {
+            font-size: 1.6em; /* Adjusted base logo size */
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 0.5em;
+            line-height: 1.2;
+        }
+
+        /* Navigation styling */
+        nav {
+             background-color: #003366;
+             width: 100%;
+             padding: 0.5em 0;
+             transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        /* Fixed navigation style */
+        nav.nav-fixed {
+             position: fixed;
+             top: 0;
+             left: 0;
+             z-index: 1000;
+             background-color: #003366;
+             box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
+
+        nav ul {
+            list-style: none; padding: 0; margin: 0;
+            display: flex; justify-content: center; flex-wrap: wrap;
+        }
+        nav ul li { margin: 0 0.5em; position: relative; }
+
+        /* Nav links styling */
+        nav ul li a, .dropdown-content a {
+            color: #ffffff; text-decoration: none; font-weight: 600;
+            text-transform: uppercase; padding: 0.75em 1em; border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            display: block; cursor: pointer;
+            font-size: 0.875em; /* 14px if base is 16px */
+        }
+        nav ul li a:hover, .dropdown-content a:hover {
+            background-color: #00509e; transform: translateY(-2px);
+        }
+
+        /* Dropdown menu styling */
+        .dropdown-content {
+            display: none; position: absolute; background-color: #003366;
+            min-width: 220px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1; top: 100%; left: 0; border-radius: 0 0 5px 5px;
+            text-align: left;
+        }
+        .dropdown-content a {
+            white-space: normal; padding: 0.8em 1.2em;
+            font-size: 0.8125em; /* 13px if base is 16px */
+            border-radius: 0; border-bottom: 1px solid #004080;
+        }
+         .dropdown-content a:last-child { border-bottom: none; }
+        nav ul li:hover .dropdown-content { display: block; }
+
+        /* Main content area styling */
+        main { padding: 2em 1em; max-width: 1200px; margin: 0 auto; }
+        body.nav-padding { /* Padding added dynamically by JS */ }
+
+        /* Section styling */
+        section {
+            background-color: #ffffff; padding: 2em 1.5em; margin-bottom: 2em;
+            border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease; display: none;
+        }
+        section.active-section { display: block; }
+        section:hover { transform: translateY(-5px); }
+
+        /* Consistent Heading Sizes */
+        section h2 { /* Main Section Title */
+            color: #003366; border-bottom: 2px solid #007acc;
+            padding-bottom: 0.75em; margin-bottom: 1.5em;
+            font-size: 1.6em; /* Consistent size for mobile */
+            line-height: 1.3;
+        }
+        section h3 { /* Sub-heading Level 1 */
+            color: #004080; margin-top: 1.5em; margin-bottom: 1em;
+            font-size: 1.3em; /* Consistent size for mobile */
+            font-weight: 600; line-height: 1.4;
+        }
+         section h4 { /* Sub-heading Level 2 */
+            color: #00509e; margin-top: 1.5em; margin-bottom: 0.8em;
+            font-size: 1.1em; /* Consistent size for mobile */
+            font-weight: 600; line-height: 1.4;
+        }
+         section h5 { /* Sub-heading Level 3 (e.g., Kebutuhan SKBDN) */
+            color: #00509e; /* Match h4 color */
+            margin-top: 1.2em; /* Adjust spacing */
+            margin-bottom: 0.8em;
+            font-size: 1.1em; /* Match h4 size on mobile */
+            font-weight: 600;
+            line-height: 1.4;
+         }
+
+        /* Consistent Body Text Sizes */
+        section p, section li, section td { /* Added td for table consistency */
+            margin-bottom: 1em;
+            font-size: 1em; /* 16px base size for mobile */
+            line-height: 1.7;
+        }
+        /* Ensure text within lists (including paragraphs and strong tags) uses the base size */
+        section ul li, section ol li {
+             margin-bottom: 0.6em;
+             font-size: 1em; /* Explicitly set base size */
+        }
+        section ul li p, section ol li p {
+             margin-bottom: 0.5em;
+             font-size: 1em; /* Explicitly set base size */
+        }
+         section ul li strong, section ol li strong {
+             font-weight: 600; /* Keep bold */
+             font-size: inherit; /* Inherit size from parent li */
+         }
+
+
+        /* List styling */
+        section ul, section ol { margin-left: 1.2em; margin-bottom: 1.5em; padding-left: 1em; }
+        section ul ul, section ol ol { margin-left: 1.2em; margin-bottom: 0.5em; margin-top: 0.5em; }
+        section ul ul ul, section ol ol ol { margin-left: 1.2em; margin-bottom: 0.5em; margin-top: 0.5em; }
+
+
+        /* Footer styling */
+        footer {
+            background-color: #003366; color: #ffffff; text-align: center;
+            padding: 2em 1em; margin-top: 3em; border-top: 2px solid #00509e;
+            font-size: 0.875em; /* 14px */
+        }
+
+        /* Button styling */
+        .simulasi-button {
+            display: inline-block; background-color: #007acc; color: white;
+            padding: 0.8em 1.6em; text-decoration: none; border-radius: 5px;
+            font-weight: 600; transition: all 0.3s ease; margin-top: 1em;
+            font-size: 1em; /* 16px */
+        }
+        .simulasi-button:hover { background-color: #00509e; transform: translateY(-2px); }
+
+        /* CTA section styling */
+        .cta-section {
+            text-align: center; padding: 3em 1em; background-color: #f0f0f0;
+            border-radius: 8px; margin-top: 3em;
+        }
+        .cta-section h2 {
+            color: #003366; font-size: 1.8em; margin-bottom: 1em; border-bottom: none;
+        }
+        .cta-section p {
+            font-size: 1em; color: #555; margin-bottom: 2em;
+            max-width: 800px; margin: 0 auto 2em auto;
+        }
+
+        /* Table styling */
+        table { width: 100%; border-collapse: collapse; margin-top: 1em; border: 1px solid #ccc; word-wrap: break-word; table-layout: auto; }
+        th, td { padding: 0.75em; border-bottom: 1px solid #ddd; border-right: 1px solid #ddd; text-align: left; vertical-align: top; font-size: 0.9em; /* Slightly smaller table text */ }
+        th { background-color: #f0f0f0; font-weight: 600; color: #333; }
+        th:last-child, td:last-child { border-right: none; }
+        tr:last-child td { border-bottom: none; }
+
+        /* Responsive Table Styling (Mobile First) */
+         table { border: 0; }
+         table thead { border: none; clip: rect(0 0 0 0); height: 1px; margin: -1px; overflow: hidden; padding: 0; position: absolute; width: 1px; }
+         table tr { border-bottom: 2px solid #00509e; display: block; margin-bottom: 1em; box-shadow: 0 1px 3px rgba(0,0,0,0.1); background-color: #fff; border-radius: 5px; border: 1px solid #e0e0e0; }
+         table td { border-bottom: 1px dotted #ccc; display: block; font-size: 0.9em; text-align: right; padding-left: 50%; padding-top: 0.8em; padding-bottom: 0.8em; padding-right: 1em; position: relative; border-right: none; }
+         table td:last-child { border-bottom: 0; }
+         table td::before { content: attr(data-label); display: block; font-weight: bold; position: absolute; left: 1em; top: 0.8em; width: 45%; padding-right: 10px; white-space: normal; text-align: left; color: #003366; font-size: 0.9em; }
+
+
+        /* Larger Screen Adjustments (Desktop) */
+        @media (min-width: 769px) {
+             header { padding: 1.5em 0 0 0; }
+             header .logo { font-size: 2em; } /* Restore desktop logo size */
+             nav ul li { margin: 0 1.5em; }
+             nav ul li a { padding: 0.75em 1.5em; font-size: 0.9375em; /* 15px */ }
+             .dropdown-content { min-width: 250px; }
+             .dropdown-content a { padding: 1em 1.5em; font-size: 0.875em; /* 14px */ white-space: nowrap; }
+
+             main { padding: 4em 1em; }
+             section { padding: 3em; margin-bottom: 3em; }
+             /* Restore Desktop Font Sizes */
+             section h2 { font-size: 2.2em; }
+             section h3 { font-size: 1.6em; }
+             section h4 { font-size: 1.3em; }
+             section h5 { font-size: 1.3em; } /* Match h4 size on desktop */
+             section p, section li, section td { font-size: 1.125em; } /* 18px base text on desktop */
+             section ul, section ol { margin-left: 1.5em; font-size: 1em; } /* Reset list font size relative to parent */
+             section ul li strong, section ol li strong { font-size: inherit; } /* Ensure strong tag inherits desktop size */
+
+
+             .cta-section { padding: 4em 1em; }
+             .cta-section h2 { font-size: 2.5em; }
+             .cta-section p { font-size: 1.125em; } /* Match body text */
+             .simulasi-button { font-size: 1.1em; padding: 0.75em 1.5em; }
+
+             /* Restore default table layout on larger screens */
+             table { border: 1px solid #ccc; table-layout: auto; }
+             table thead { clip: auto; height: auto; margin: 0; overflow: visible; position: static; width: auto; border: none; }
+             table tr { border-bottom: none; display: table-row; margin-bottom: 0; box-shadow: none; background-color: transparent; border-radius: 0; border: none; }
+             table th, table td { display: table-cell; font-size: 1em; /* Table text relative to body */ text-align: left; padding-left: 0.75em; position: static; border-bottom: 1px solid #ddd; min-height: auto; }
+             table td { border-right: 1px solid #ddd; }
+             table th { background-color: #f0f0f0; font-weight: 600; color: #333; border-right: 1px solid #ddd; }
+             table td::before { content: none; display: none; }
+             th:last-child, td:last-child { border-right: none; }
+             tr:last-child td { border-bottom: none; }
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">UNIT TRADE FINANCE - DESK TRESURI</div>
+        </div>
+        <nav id="main-nav">
+            <ul>
+                <li class="dropdown">
+                    <a data-target="penjelasan-produk-group">Penjelasan Produk</a>
+                    <div class="dropdown-content">
+                        <a data-target="penjelasan-skbdn">Produk SKBDN</a>
+                        <a data-target="penjelasan-sblc">Produk SBLC</a>
+                        <a data-target="perbandingan-skbdn-sblc">Perbandingan SKBDN & SBLC</a>
+                        <a data-target="akad-syariah">Akad Syariah</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a data-target="persyaratan-dokumen-group">Persyaratan Dokumen</a>
+                    <div class="dropdown-content">
+                        <a data-target="persyaratan-dokumen-skbdn">Dokumen SKBDN</a>
+                        <a data-target="persyaratan-dokumen-sblc">Dokumen SBLC</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                     <a data-target="skema-alur-transaksi-group">Skema Alur Transaksi</a>
+                    <div class="dropdown-content">
+                        <a data-target="skema-alur-transaksi-skbdn-sight">Alur Transaksi SKBDN Sight</a>
+                        <a data-target="skema-alur-transaksi-skbdn-usance">Alur Transaksi SKBDN Usance</a>
+                        <a data-target="skema-alur-transaksi-skbdn-upas">Alur Transaksi SKBDN UPAS</a>
+                        <a data-target="skema-alur-transaksi-skbdn-upau">Alur Transaksi SKBDN UPAU</a>
+                        <a data-target="skema-alur-transaksi-skbdn">Alur Transaksi SKBDN (Umum)</a>
+                    </div>
+                </li>
+                <li><a data-target="target-nasabah">Target Nasabah</a></li>
+                <li class="dropdown">
+                     <a data-target="pricing-group">Daftar Pricing</a>
+                    <div class="dropdown-content">
+                        <a data-target="pricing-skbdn">Pricing SKBDN</a>
+                        <a data-target="pricing-sblc">Pricing SBLC</a>
+                    </div>
+                </li>
+                <li><a data-target="simulasi-biaya">Simulasi Biaya</a></li>
+                 <li class="dropdown">
+                     <a data-target="file-download-group">File Download</a>
+                    <div class="dropdown-content">
+                        <a data-target="file-download-skbdn">File SKBDN</a>
+                        <a data-target="file-download-sblc">File SBLC</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="penjelasan-produk-group" class="content-section"></section>
+        <section id="persyaratan-dokumen-group" class="content-section"></section>
+        <section id="skema-alur-transaksi-group" class="content-section"></section>
+        <section id="pricing-group" class="content-section"></section>
+        <section id="file-download-group" class="content-section"></section>
+
+        <section id="penjelasan-skbdn" class="content-section">
+             <h2>Produk SKBDN</h2>
+            <h3>PENGERTIAN</h3><p>Surat Kredit Berdokumen Dalam Negeri (SKBDN) atau Letter of Credit (LC) Dalam Negeri adalah setiap janji tertulis berdasarkan permintaan tertulis Pemohon (Applicant) yang mengikat Bank Pembuka (Issuing Bank) untuk:</p><ol><li>Melakukan pembayaran kepada Penerima atau ordernya, atau mengaksep dan membayar wesel yang ditarik oleh Penerima;</li><li>Memberi kuasa kepada bank lain untuk melakukan pembayaran kepada penerima atau ordernya, atau mengaksep dan membayar wesel yang ditarik oleh penerima; atau</li><li>Memberi kuasa kepada bank lain untuk menegosiasi wesel yang ditarik oleh Penerima.</li></ol>
+            <h3>JENIS</h3><p>Jenis SKBDN berdasarkan masa jatuh tempo (tenor), terdiri dari:</p><ol><li><strong>Sight SKBDN:</strong> SKBDN yang memberikan jaminan kepada Beneficiary (penerima SKBDN) atau penarik, untuk meminta pembayaran kepada tertarik pada saat dokumen diserahkan (atas unjuk).</li><li><strong>Usance SKBDN:</strong> SKBDN yang mengandung syarat bahwa pembayaran kepada Beneficiary (penerima SKBDN) atau penarik pada waktu yang telah ditentukan (berjangka).</li><li><strong>Usance Payable at Sight (UPAS) SKBDN:</strong> Usance SKBDN yang mengandung syarat bahwa pembayaran kepada Beneficiary (penerima SKBDN) atau penarik dilakukan secara tunai (namun Applicant membayar pada saat jatuh tempo usance).</li><li><strong>Usance Payable at Usance (UPAU) SKBDN:</strong> Usance SKBDN yang mengandung syarat bahwa pembayaran kepada Beneficiary (penerima SKBDN) atau penarik dilakukan secara berjangka (setelah periode usance awal).</li></ol>
+            <h3>JENIS LAYANAN</h3><ol><li><p><strong>LAYANAN PENERBITAN</strong> yang meliputi:</p><ul><li><p>Layanan Penerbitan SKBDN tanpa disertai pemberian pembiayaan (Non Funded), dengan jenis SKBDN sebagai berikut:</p><ul><li>Sight SKBDN</li><li>Usance SKBDN</li></ul></li><li><p>Layanan Penerbitan yang disertai pemberian pembiayaan (Funded), untuk SKBDN dengan jenis:</p><ul><li>Sight SKBDN disertai pembiayaan Trust Receipt</li><li>Usance SKBDN disertai pembiayaan Trust Receipt</li><li>Usance Payable at Sight disertai pembiayaan Pembiayaan UPAS</li><li>Usance Payable at Usance disertai disertai Pembiayaan UPAU</li></ul></li></ul></li><li><p><strong>LAYANAN PENERIMAAN</strong> yang meliputi:</p><ul><li><p>Layanan Penerimaan SKBDN tanpa disertai pemberian pembiayaan yang terdiri dari:</p><ul><li>Layanan Collection Document Against Acceptance</li><li>Layanan Collection Document Against Payment</li><li>Layanan Advising / Penerusan</li><li>Layanan Transfer SKBDN</li></ul></li><li><p>Layanan Penerimaan SKBDN yang disertai pemberian pembiayaan yang terdiri dari:</p><ul><li>Forfaiting / Diskonto</li><li>Nego Wesel</li></ul></li><li><p>Layanan Penerimaan SKBDN dimana bank dapat bertindak dalam peran sebagai berikut:</p><ul><li><p><strong>Bank Penegosiasi (Negotiating Bank):</strong> Bank yang memeriksa dan menegosiasikan dokumen dari penerima SKBDN, lalu mengajukan pembayaran ke bank penerbit.</p></li><li><p><strong>Bank Penerus (Advising Bank):</strong> Bank yang meneruskan SKBDN dari bank penerbit ke penerima SKBDN tanpa mengubah isinya.</p></li><li><p><strong>Bank Pengirim (Remitting Bank):</strong> Bank yang mengirim dokumen ke bank pembeli atas permintaan penjual.</p></li><li><p><strong>Bank Pengkonfirmasi (Confirming Bank):</strong> Bank yang menambahkan jaminan pembayaran atas nama bank penerbit, sehingga penjual mendapatkan kepastian pembayaran.</p></li><li><p><strong>Bank Pentransfer (Transferring Bank):</strong> Bank yang mentransfer SKBDN kepada pihak lain (misalnya sub-kontraktor), jika SKBDN bersifat transferable.</p></li></ul></li></ul></li></ol>
+            <h3>KARAKTERISTIK</h3><p>Karakteristik Umum dari SKBDN adalah sebagai berikut:</p><ol><li><strong>Irrevocable SKBDN:</strong> SKBDN yang tidak dapat dibatalkan atau tidak dapat ditarik kembali tanpa pemberitahuan/persetujuan terlebih dahulu dari Beneficiary. SKBDN yang tidak secara tegas menyebutkan Irrevocable, diperlakukan sebagai Irrevocable SKBDN.</li><li><strong>Red Clause SKBDN:</strong> SKBDN yang memberikan fasilitas kepada Beneficiary (penerima SKBDN) untuk menarik uang muka terlebih dahulu sebelum SKBDN tersebut direalisasi.</li><li><strong>Transferable SKBDN:</strong> SKBDN dimana Beneficiary (pertama) dapat meminta Nominated Bank untuk mengalihkan sebagian atau seluruh nilai SKBDN kepada satu atau beberapa Beneficiary lain (kedua).</li><li><strong>Back to Back SKBDN:</strong> SKBDN yang diterbitkan berdasarkan penerimaan SKBDN lain sebelumnya (master L/C) dimana syarat-syarat SKBDN tersebut harus sama dengan syarat-syarat master L/C, kecuali jangka waktu penyerahan dokumennya dan nominal SKBDN harus lebih kecil.</li><li><strong>Revolving SKBDN:</strong> Suatu SKBDN yang dapat direalisasikan beberapa kali (nilai kredit dapat pulih kembali setelah digunakan).</li><li><strong>Restricted SKBDN:</strong> SKBDN yang hanya dapat dinegosiasi oleh bank yang ditunjuk/disebutkan dalam SKBDN tersebut.</li><li><strong>Payment SKBDN:</strong> SKBDN dimana Issuing Bank menunjuk suatu bank (dengan mencantumkan nama bank tersebut di dalam SKBDN) untuk berfungsi sebagai Paying Bank dan bank yang ditunjuk menyetujui penunjukannya tersebut.</li><li><strong>Negotiation SKBDN:</strong> Ketika suatu bank dikatakan menegosiasi SKBDN jika bank tersebut atas kemauannya sendiri membeli wesel dan dokumen-dokumen lain yang dijual oleh eksportir untuk kemudian diajukan kepada Issuing Bank guna meminta pembayaran.</li><li><strong>Confirmed SKBDN:</strong> SKBDN yang pembayarannya dijamin selain oleh Issuing Bank juga dijamin pembayarannya oleh Advising Bank atau pihak lain yang ditunjuk dalam SKBDN (Confirming Bank) yang sifatnya Irrevocable.</li></ol>
+        </section>
+
+        <section id="penjelasan-sblc" class="content-section">
+            <h2>Produk SBLC</h2>
+            <h3>PENGERTIAN</h3><p>Standby Letter of Credit selanjutnya disebut SBLC adalah suatu bentuk penjaminan dari Bank Penerbit SBLC kepada Beneficiary atau Bank yang mewakili Beneficiary terhadap kemungkinan terjadinya wanprestasi/default dari Buyer/Applicant (pihak yang dijamin/pemohon SBLC).</p>
+            <h3>JENIS LAYANAN</h3><p>Jenis Layanan Standby Letter of Credit (SBLC) meliputi Layanan Penerbitan SBLC dan Layanan Penerimaan SKBLC dengan Jenis SBLC sebagai berikut:</p><ol><li><p><strong>Performance SBLC:</strong> Merupakan SBLC untuk menjamin kewajiban diluar pembayaran uang, termasuk untuk keperluan pertanggungan kerugian yang timbul akibat gagalnya Buyer/Applicant dalam menyelesaikan transaksi yang mendasarinya.</p></li><li><p><strong>Advance payment SBLC:</strong> Merupakan SBLC yang menjamin kewajiban untuk pembayaran uang muka yang dilakukan oleh beneficiary kepada applicant. Komitmen bank untuk membayar pembeli sejumlah tertentu jika penjual gagal menyerahkan barang atau jasa. Jumlah SBLC biasanya merupakan persentase dari uang muka yang dilakukan oleh pembeli dan ditentukan oleh ketentuan kontrak.</p></li><li><p><strong>Bid bond/tender bond SBLC:</strong> Merupakan SBLC yang menjamin kewajiban applicant untuk melaksanakan kontrak jika applicant diberikan penawaran/ memenangkan tender.</p></li><li><p><strong>Counter SBLC:</strong> Merupakan SBLC yang berfungsi untuk menjamin penerbitan LC/SKBDN oleh pihak penerbit/bank. SBLC adalah yang pertama dari dua LC/SKBDN dalam transaksi LC/SKBDN yang berturut-turut. Standby SBLC mendukung penerbitan standby letter of credit kedua, yang disebut dengan local undertaking, oleh bank yang menjadi penerima counter standby. Bank penerima biasanya terbiasa menerbitkan surat utang lokal yang didukung oleh counter standby.</p></li><li><p><strong>Financial SBLC:</strong> Merupakan SBLC yang menjamin kewajiban membayar uang, termasuk instrumen apa pun yang membuktikan kewajiban membayar kembali uang pinjaman. Instrumen yang diterbitkan oleh bank atas nama kliennya, memberikan jaminan komitmen untuk membayar penjual jika kliennya (pembeli) wanprestasi terhadap perjanjian.</p></li><li><p><strong>Direct pay SBLC:</strong> Merupakan SBLC yang menjamin pembayaran pada saat jatuh tempo kewajiban, mendukung pembayaran pada saat jatuh tempo kewajiban pembayaran yang mendasarinya tanpa memperhatikan apakah telah terjadi wanprestasi atas kewajiban pembayaran yang mendasarinya.</p></li><li><p><strong>Insurance SBLC:</strong> Merupakan SBLC yang mendukung asuransi atau reasuransi kewajiban applicant.</p></li><li><p><strong>Commercial SBLC:</strong> Merupakan SBLC yang menjamin kewajiban pemohon untuk membayar barang atau jasa, mendukung kewajiban pembayaran pemohon berdasarkan kontrak penjualan atau kontrak layanan jika pemohon gagal memenuhi kewajiban pembayarannya.</p></li></ol>
+            <h3>KARAKTERISTIK</h3><p>Karakteristik SBLC (Standby Letter of Credit):</p><ol><li><p><strong>Bersifat Jaminan (Guarantee Nature):</strong> SBLC digunakan sebagai bentuk jaminan pembayaran apabila pihak pemohon (applicant) gagal memenuhi kewajibannya kepada penerima (beneficiary). Jadi, bank hanya akan membayar jika terjadi wanprestasi.</p></li><li><p><strong>Dokumen Berdasarkan Permintaan (Documentary in Nature):</strong> Pembayaran SBLC dilakukan berdasarkan dokumen yang diserahkan oleh penerima, bukan berdasarkan bukti pelaksanaan kewajiban. Artinya, bank tidak menilai kinerja, hanya kesesuaian dokumen.</p></li><li><p><strong>Independent Undertaking (Kewajiban Terpisah):</strong> SBLC bersifat independen dari kontrak pokok. Artinya, meskipun kontrak antara pemohon dan penerima bermasalah, bank tetap wajib membayar selama dokumen yang disyaratkan sesuai.</p></li><li><p><strong>Tidak Digunakan untuk Transaksi Dagang Rutin:</strong> Berbeda dari LC biasa, SBLC bukan untuk pembayaran transaksi barang/jasa langsung, tapi sebagai cadangan jika terjadi wanprestasi.</p></li><li><p><strong>Berlaku Secara Internasional:</strong> SBLC umumnya mengikuti aturan ISP98 (International Standby Practices 1998) atau kadang UCP 600 jika disepakati.</p></li><li><p><strong>Waktu Berlaku Terbatas:</strong> SBLC memiliki masa berlaku tertentu dan akan kedaluwarsa jika tidak digunakan dalam jangka waktu tersebut.</p></li><li><p><strong>Pembayaran Bersifat Kondisional:</strong> Bank hanya akan membayar jika penerima menyampaikan permintaan pembayaran disertai dokumen yang dipersyaratkan, seperti surat pernyataan wanprestasi.</p></li></ol>
+        </section>
+
+        <section id="perbandingan-skbdn-sblc" class="content-section">
+            <h2>Perbandingan SKBDN dan SBLC</h2><div style="overflow-x:auto;"> <table><thead> <tr><th>Aspek</th> <th>SKBDN</th> <th>SBLC</th></tr></thead><tbody> <tr><td data-label="Aspek">Kepanjangan</td><td data-label="SKBDN">Surat Kredit Berdokumen Dalam Negeri</td><td data-label="SBLC">Standby Letter of Credit</td></tr><tr><td data-label="Aspek">Jenis Produk</td><td data-label="SKBDN">Instrumen pembayaran</td><td data-label="SBLC">Instrumen jaminan</td></tr><tr><td data-label="Aspek">Fungsi Utama</td><td data-label="SKBDN">Menjamin pembayaran atas transaksi barang/jasa domestik</td><td data-label="SBLC">Menjamin kewajiban nasabah jika terjadi wanprestasi</td></tr><tr><td data-label="Aspek">Kapan Dicairkan?</td><td data-label="SKBDN">Dicairkan saat penjual menyerahkan dokumen sesuai syarat SKBDN</td><td data-label="SBLC">Dicairkan hanya jika nasabah gagal memenuhi kewajiban</td></tr><tr><td data-label="Aspek">Pihak Terlibat</td><td data-label="SKBDN">Buyer (Applicant), Seller (Beneficiary), Issuing Bank, Advising/Confirming Bank (jika ada)</td> <td data-label="SBLC">Applicant (nasabah), Beneficiary (penerima jaminan), Issuing Bank</td></tr><tr><td data-label="Aspek">Dokumen Wajib (Umum)</td> <td data-label="SKBDN">Dokumen pengiriman barang (invoice, B/L atau DO, packing list, dsb sesuai syarat SKBDN)</td><td data-label="SBLC">Dokumen klaim wanprestasi (misal: sertifikat gagal bayar, surat pernyataan klaim, dsb sesuai syarat SBLC)</td></tr><tr><td data-label="Aspek">Tujuan Utama</td><td data-label="SKBDN">Memberikan <em>payment assurance</em> atas pembelian barang/jasa</td><td data-label="SBLC">Memberikan <em>performance/payment assurance</em> atas kewajiban kontrak/proyek</td></tr><tr><td data-label="Aspek">Pendapatan Bank (Contoh)</td> <td data-label="SKBDN">Fee pembukaan, advising, negosiasi/pencairan, amandemen, diskonto (jika usance)</td><td data-label="SBLC">Fee jaminan (provisi), amandemen, handling klaim</td></tr><tr><td data-label="Aspek">Risiko Bank (Umum)</td> <td data-label="SKBDN">Risiko kredit (jika buyer gagal bayar), Risiko operasional (dokumen tidak sesuai)</td><td data-label="SBLC">Risiko kredit (jika nasabah wanprestasi & bank harus bayar klaim), Risiko operasional</td></tr><tr><td data-label="Aspek">Digunakan oleh</td><td data-label="SKBDN">Pembeli dan penjual dalam transaksi perdagangan domestik</td><td data-label="SBLC">Nasabah yang memiliki kewajiban kontrak (proyek, tender, supply, sewa, dll.)</td></tr></tbody></table></div><p>Dengan kata lain, kedua produk ini tidak hanya membantu nasabah dalam menjalankan transaksi bisnis, tetapi juga membuka peluang besar bagi bank (cabang) untuk mendapatkan pendapatan berbasis biaya (<em>fee-based income</em>) yang menarik!</p><p>Produk kami dirancang dengan fokus pada kemudahan penggunaan dan efisiensi. Kami terus melakukan pengembangan dan pembaruan untuk memastikan produk kami selalu relevan dan sesuai dengan kebutuhan pasar. Jangan ragu untuk menghubungi tim kami jika Anda memiliki pertanyaan lebih lanjut.</p>
+        </section>
+
+        <section id="akad-syariah" class="content-section">
+            <h2>Akad Syariah Transaksi SKBDN dan SBLC</h2><h3>Akad Penerbitan SKBDN & SBLC</h3><div style="overflow-x:auto;"><table><thead><tr><th>Produk</th><th>Akad</th><th>Prinsip</th><th>Fatwa DSN-MUI</th></tr></thead><tbody><tr><td data-label="Produk">Penerbitan SKBDN</td><td data-label="Akad">Wakalah bil Ujrah</td><td data-label="Prinsip">Bank syariah bertindak sebagai wakil (muwakkil) nasabah untuk melakukan transaksi SKBDN. Nasabah mewakilkan kepada bank syariah untuk melakukan berbagai tindakan terkait transaksi SKBDN, seperti negosiasi dengan pihak lain, penyelesaian pembayaran, dan pengambilan risiko. Bank syariah wajib melaksanakan tugasnya sebagai wakil dengan penuh tanggung jawab dan sesuai dengan instruksi nasabah.</td><td data-label="Fatwa">Nomor 113/DSN-MUI/IX/2017 tentang Akad Wakalah Bil Ujrah</td></tr><tr><td data-label="Produk">Penerbitan SBLC/Jaminan</td><td data-label="Akad">Kafalah Bil Ujrah</td><td data-label="Prinsip">Bank syariah bertindak sebagai penjamin (kafil) atas kewajiban nasabah kepada penerima. Bank syariah wajib memenuhi kewajiban nasabah kepada penerima jika nasabah gagal memenuhinya. Nasabah wajib mengganti kepada bank syariah atas segala pembayaran yang dilakukan bank syariah kepada penerima. Nasabah wajib membayar ujrah (fee) kepada bank syariah atas jasa penjaminan yang diberikan. Ujrah dapat dibayarkan secara berkala atau di muka, tergantung kesepakatan.</td><td data-label="Fatwa">Nomor 57/DSN-MUI/V/2007 tentang Akad Kafalah Bil Ujrah</td></tr></tbody></table></div><h3>Akad Penerimaan SKBDN & SBLC</h3><div style="overflow-x:auto;"><table><thead><tr><th>Produk</th><th>Akad</th><th>Prinsip & Penerapan</th><th>Fatwa DSN-MUI</th></tr></thead><tbody><tr><td data-label="Produk">Penerimaan/Advising SKBDN</td><td data-label="Akad">Wakalah bil Ujrah</td><td data-label="Prinsip & Penerapan">Bank syariah bertindak sebagai wakil (wakil) nasabah untuk membantu proses advisi SKBDN. <br><strong>Penerapan:</strong> Nasabah memberi kuasa kepada bank syariah untuk menangani tugas-tugas advisi SKBDN, termasuk negosiasi dengan pihak terkait, pengurusan dokumen, dan memastikan kepatuhan terhadap regulasi. <br><strong>Keuntungan:</strong> Akad ini sesuai dengan prinsip syariah dan memberikan kejelasan peran dan tanggung jawab kedua belah pihak.</td><td data-label="Fatwa">Nomor 113/DSN-MUI/IX/2017 tentang Akad Wakalah Bil Ujrah</td></tr><tr><td data-label="Produk">Penerimaan/Advising SBLC</td><td data-label="Akad">Wakalah bil Ujrah</td><td data-label="Prinsip & Penerapan">Bank syariah bertindak sebagai wakil (wakil) nasabah untuk membantu proses advisi SBLC. <br><strong>Penerapan:</strong> Nasabah memberi kuasa kepada bank syariah untuk menangani tugas-tugas advisi SBLC, termasuk negosiasi dengan pihak terkait, pengurusan dokumen, dan memastikan kepatuhan terhadap regulasi. <br><strong>Keuntungan:</strong> Akad ini sesuai dengan prinsip syariah dan memberikan kejelasan peran dan tanggung jawab kedua belah pihak.</td><td data-label="Fatwa">Nomor 113/DSN-MUI/IX/2017 tentang Akad Wakalah Bil Ujrah</td></tr></tbody></table></div><h3>Akad Forfaiting/Diskonto & Collection</h3><div style="overflow-x:auto;"><table><thead><tr><th>Produk</th><th>Akad</th><th>Prinsip & Penerapan</th><th>Fatwa DSN-MUI</th></tr></thead><tbody><tr><td data-label="Produk">Forfaiting / Diskonto</td><td data-label="Akad">Wakalah bil Ujrah dan Qard</td><td data-label="Prinsip & Penerapan">Pembeli mewakilkan kepada bank syariah untuk membeli instrumen utang atas namanya, dan bank syariah bertanggung jawab atas proses pembelian dan pengelolaan instrumen tersebut. Pembeli membayar biaya jasa (ujrah) kepada bank syariah atas layanannya. <br><strong>Penerapan:</strong> Bank syariah dapat membeli wesel dagang atau bill of exchange atas nama pembeli dengan harga yang lebih rendah dari nilai nominalnya, dan pembeli "membayar kembali" harga beli tersebut kepada bank syariah dengan angsuran yang lebih tinggi, dengan anggapan bahwa "diskon" tersebut merupakan bagian dari keuntungan bank syariah atas jasa pembelian. <br><strong>Keuntungan:</strong> Akad wakalah bil ujrah memberikan kemudahan bagi pembeli dalam melakukan transaksi pembelian instrumen utang.</td><td data-label="Fatwa">Nomor 113/DSN-MUI/IX/2017 (Wakalah Bil Ujrah) & Nomor 35/DSN-MUI/IX/2002 (LC Ekspor Syariah)</td></tr><tr><td data-label="Produk">Negosiasi / Collection</td><td data-label="Akad">Wakalah bil Ujrah</td><td data-label="Prinsip & Penerapan">Bank syariah bertindak sebagai wakil (wakil) nasabah untuk membantu proses negosiasi dan collection. <br><strong>Penerapan:</strong> Nasabah memberi kuasa (wakalah) kepada bank syariah untuk menangani tugas-tugas terkait negosiasi dan collection, termasuk berkomunikasi dengan debitur, mencapai kesepakatan pembayaran, dan menjalankan strategi collection. <br><strong>Keuntungan:</strong> Akad ini sesuai dengan prinsip syariah dan memberikan kejelasan peran dan tanggung jawab kedua belah pihak.</td><td data-label="Fatwa">Nomor 113/DSN-MUI/IX/2017 tentang Akad Wakalah Bil Ujrah</td></tr></tbody></table></div>
+        </section>
+
+        <section id="target-nasabah" class="content-section">
+            <h2>Target Nasabah Potensial</h2>
+            <p>Produk SKBDN & SBLC biasanya digunakan oleh perusahaan dengan karakteristik berikut:</p>
+            <ol>
+                <li>Vendor proyek-proyek pemerintah/BUMN</li>
+                <li>Distributor barang besar (otomotif, alat berat, farmasi)</li>
+                <li>Perusahaan EPC (Engineering, Procurement, Construction)</li>
+                <li>Perusahaan Oil & Gas (Hulu maupun Hilir)</li>
+                <li>Kontraktor swasta dan penyedia barang/jasa</li>
+                <li>Importir/eksportir (untuk SBLC yang digunakan domestik atau internasional)</li>
+            </ol>
+
+            <h3>Contoh Kebutuhan bagi Nasabah Potensial Tersebut</h3>
+
+            <h4>1. Vendor Proyek-proyek Pemerintah/BUMN</h4> <p>Vendor yang terlibat dalam proyek-proyek pemerintah atau BUMN umumnya menghadapi persyaratan administrasi dan keuangan yang ketat, termasuk terkait skema pembayaran dan jaminan pelaksanaan. Dalam hal ini, SKBDN (Surat Kredit Berdokumen Dalam Negeri) dan SBLC (Standby Letter of Credit) menjadi solusi finansial yang efektif dan efisien.</p>
+            <h5>Kebutuhan SKBDN:</h5>
+            <ul><li>Vendor proyek sering diminta untuk menyediakan <strong>jaminan pembayaran atau kepastian pembayaran</strong> atas barang/jasa yang mereka suplai kepada instansi pemerintah/BUMN.</li><li>Umumnya, <strong>pihak BUMN menghindari pembayaran di muka (advance payment)</strong> dan lebih menyukai <strong>skema pembayaran setelah pengiriman barang/jasa (post-shipment)</strong> yang disertai dokumen pendukung.</li><li>SKBDN <strong>memberikan jaminan pembayaran yang kredibel</strong>, karena komitmen pembayaran dijamin oleh bank, bukan sekadar kontrak biasa.</li><li>SKBDN juga membantu <strong>mempercepat proses administrasi pembayaran</strong>, karena pembayaran dapat dilakukan secara otomatis apabila syarat dokumen terpenuhi.</li><li>Cocok untuk proyek dengan <strong>skema pembayaran bertahap (milestone)</strong>, di mana setiap termin pengiriman dapat dibuktikan melalui dokumen SKBDN.</li><li>Penggunaan SKBDN turut meningkatkan <strong>kredibilitas dan profesionalitas vendor</strong> di mata instansi pemerintah/BUMN.</li></ul>
+            <h5>Kebutuhan SBLC:</h5>
+            <ul><li>Digunakan sebagai <strong>jaminan pelaksanaan kontrak, jaminan pembayaran, dan jaminan uang muka (advance payment guarantee)</strong>.</li><li>Banyak tender pemerintah/BUMN <strong>mensyaratkan SBLC sebagai bentuk jaminan atas potensi wanprestasi</strong> oleh pihak vendor.</li><li>SBLC bersifat <strong>standby</strong>, yaitu hanya dicairkan jika terjadi ketidakpatuhan terhadap kontrak, sehingga <strong>tidak mengganggu arus kas (cashflow)</strong> vendor selama masa proyek.</li><li>SBLC dapat digunakan untuk <strong>berbagai jenis jaminan lainnya</strong>, seperti jaminan tender, jaminan pemeliharaan, dan jaminan restitusi.</li><li>Diakui secara internasional dan <strong>bisa diterbitkan dalam format MT760</strong>, sesuai standar kontrak proyek besar.</li><li>Memberikan <strong>rasa aman bagi pihak pemberi kerja</strong> tanpa membebani pihak vendor dengan jaminan tunai atau bank garansi konvensional.</li></ul>
+
+            <h4>2. Distributor Barang Besar (Otomotif, Alat Berat, Farmasi)</h4> <p>Distributor besar yang bergerak di sektor otomotif, alat berat, dan farmasi umumnya menangani transaksi dalam jumlah besar dengan supplier lokal maupun luar negeri. Dalam transaksi seperti ini, <strong>mekanisme pembayaran yang aman, terstruktur, dan menguntungkan kedua belah pihak sangat diperlukan</strong>, terutama jika hubungan bisnis masih baru atau bersifat kontrak jangka panjang.</p>
+            <h5>Kebutuhan SKBDN:</h5><ul><li>Distributor membeli dari <strong>prinsipal besar atau produsen lokal</strong> dengan <strong>volume pembelian tinggi</strong>, sehingga nilai transaksinya pun besar.</li><li>Dalam transaksi bernilai besar, <strong>dibutuhkan skema pembayaran yang aman dan fleksibel</strong>, terutama saat belum terjalin hubungan kepercayaan jangka panjang antara distributor dan pemasok.</li><li>SKBDN <strong>memberikan jaminan kepada supplier</strong> bahwa pembayaran akan dilakukan sesuai ketentuan dokumen yang disepakati.</li><li>Distributor <strong>tidak perlu melakukan pembayaran di muka</strong>, cukup menyiapkan dokumen yang dibutuhkan untuk proses pencairan.</li><li>SKBDN <strong>menjembatani kepentingan kedua belah pihak</strong>:<ul><li>Supplier mendapatkan kepastian pembayaran dari bank.</li><li>Distributor tetap memiliki keleluasaan pengelolaan cashflow.</li></ul></li><li>Meningkatkan <strong>kredibilitas distributor</strong> sebagai pembeli di mata prinsipal, khususnya dalam pembelian reguler atau berdasarkan kontrak distribusi jangka panjang.</li></ul>
+            <h5>Kebutuhan SBLC:</h5><ul><li>Prinsipal luar negeri atau pemasok lokal kerap meminta <strong>jaminan pembayaran dalam bentuk SBLC</strong>, terutama untuk transaksi dengan <strong>pembayaran tunda (deferred payment)</strong> atau pengiriman dalam jumlah besar.</li><li>SBLC digunakan juga sebagai <strong>jaminan pelaksanaan kewajiban kontrak</strong>, seperti:<ul><li>Jaminan distribusi eksklusif (misalnya target penjualan minimal)</li><li>Jaminan atas kuota pembelian atau volume pengambilan barang</li></ul></li><li>SBLC <strong>memberi kepastian kepada pihak supplier</strong> bahwa mereka dapat mencairkan jaminan bila distributor gagal memenuhi kontrak.</li><li>Bagi <strong>distributor, SBLC adalah solusi non-cash</strong> yang tidak membebani arus kas secara langsung, namun tetap <strong>meningkatkan daya tawar dalam negosiasi kontrak</strong>.</li><li><strong>Format internasional</strong> seperti MT760 juga tersedia, sesuai kebutuhan supplier luar negeri atau perjanjian lintas negara.</li></ul>
+
+            <h4>3. Perusahaan EPC (Engineering, Procurement, Construction)</h4> <p>Perusahaan EPC menangani proyek-proyek berskala besar dan kompleks yang melibatkan berbagai pihak, termasuk pemilik proyek (project owner), vendor penyedia material, dan subkontraktor. Untuk mendukung kelancaran pelaksanaan proyek, dibutuhkan instrumen pembayaran dan jaminan keuangan yang kredibel dan terstandarisasi. Di sinilah SKBDN dan SBLC memainkan peran penting.</p>
+            <h5>Kebutuhan SKBDN:</h5><ul><li>Dalam proses <strong>pengadaan material besar dan strategis</strong> seperti turbin, pipa, baja struktur, peralatan berat, dan komponen proyek lainnya, perusahaan EPC biasanya menggunakan <strong>SKBDN sebagai alat pembayaran utama</strong> kepada vendor atau supplier.</li><li>SKBDN <strong>membantu menjaga cash flow proyek</strong>, karena pembayaran tidak perlu dilakukan penuh di awal, namun tetap memberikan rasa aman kepada vendor sehingga barang dapat dikirim tepat waktu.</li><li>Vendor merasa lebih yakin karena <strong>pembayaran dijamin oleh bank</strong>, bukan hanya berdasarkan termin atau kontrak yang bersifat internal.</li><li>SKBDN juga mempermudah proses <strong>audit dan pelacakan pengadaan</strong>, karena seluruh dokumen tercatat melalui sistem perbankan.</li><li>Mengurangi <strong>risiko wanprestasi</strong> karena pembayaran hanya dilakukan jika syarat dokumen yang disepakati telah terpenuhi, sesuai milestone proyek.</li><li>Cocok untuk proyek dengan <strong>multi-vendor dan multi-shipment</strong>, di mana kontrol dan dokumentasi pengiriman menjadi krusial.</li></ul>
+            <h5>Kebutuhan SBLC:</h5><ul><li>SBLC digunakan sebagai bentuk <strong>jaminan pelaksanaan berbagai kewajiban kontraktual</strong> yang umum diminta oleh project owner. Jenis-jenis SBLC yang digunakan antara lain:<ul><li><strong>Performance Bond:</strong> Jaminan atas pelaksanaan pekerjaan sesuai dengan kontrak.</li><li><strong>Advance Payment Guarantee:</strong> Jaminan atas uang muka yang telah diterima dari project owner agar digunakan sesuai peruntukannya.</li><li><strong>Retention Guarantee:</strong> Jaminan atas sisa pembayaran (retensi) yang ditahan oleh owner hingga masa pemeliharaan berakhir.</li><li><strong>Bid Bond:</strong> Jaminan penawaran proyek yang dibutuhkan saat mengikuti tender besar.</li></ul></li><li>SBLC sering kali menjadi <strong>persyaratan wajib dalam proyek besar (baik swasta maupun pemerintah)</strong> agar kontraktor dapat lolos tahapan tender, mengamankan uang muka, atau mencairkan termin pembayaran.</li><li>SBLC memberikan <strong>jaminan kepercayaan dari owner proyek</strong> tanpa mengharuskan perusahaan EPC menyediakan dana tunai sebagai jaminan.</li><li>Bersifat <strong>standby</strong> dan hanya dicairkan apabila terjadi pelanggaran kontrak, sehingga <strong>tidak membebani arus kas proyek</strong> secara langsung.</li></ul>
+
+             <h4>4. Perusahaan Oil & Gas (Hulu maupun Hilir)</h4> <p>Perusahaan di sektor minyak dan gas bumi (Oil & Gas), baik di sisi hulu (exploration & production) maupun hilir (refinery, distribusi, trading), terlibat dalam rantai pasok yang kompleks, melibatkan investasi besar dan risiko tinggi. Dalam ekosistem ini, dibutuhkan instrumen pembayaran dan jaminan keuangan yang dapat meminimalkan risiko dan meningkatkan kepercayaan antar pihak—di sinilah SKBDN dan SBLC berperan krusial.</p>
+             <h5>Kebutuhan SKBDN:</h5><ul><li>Digunakan untuk <strong>pembelian peralatan berat dan teknis</strong> seperti rig pengeboran, pipa migas, kompresor, katup industri, hingga sistem kontrol otomatisasi.</li><li>SKBDN memfasilitasi transaksi bernilai besar dengan <strong>jaminan pembayaran berbasis dokumen</strong>, sehingga pemasok (baik lokal maupun internasional) memiliki <strong>keyakinan</strong> bahwa pembayaran akan dilakukan jika semua dokumen terpenuhi.</li><li>Cocok <strong>untuk pembelian multi-tahap (partial shipment)</strong> dan <strong>pengiriman impor</strong>, karena SKBDN dapat disesuaikan dengan jadwal proyek dan kontrol dokumen.</li><li>Meningkatkan <strong>kredibilitas pembeli (Perusahaan Oil & Gas)</strong> di mata vendor, terutama dalam kontrak jangka panjang atau proyek internasional.</li><li>Membantu perusahaan menjaga <strong>cash flow</strong>, karena pembayaran dapat dilakukan berdasarkan pencapaian milestone atau dokumen tertentu, bukan secara penuh di awal.</li></ul>
+             <h5>Kebutuhan SBLC:</h5><ul><li>SBLC sangat umum digunakan dalam industri ini untuk memberikan <strong>jaminan keuangan kepada pemilik proyek, vendor, atau mitra bisnis</strong>, seperti:<ul><li><strong>Performance Bond:</strong> Jaminan atas pelaksanaan pekerjaan proyek eksplorasi, pembangunan fasilitas, atau pengeboran.</li><li><strong>Advance Payment Guarantee:</strong> Untuk menjamin penggunaan uang muka dari project owner sesuai kontrak.</li><li><strong>Retention Guarantee:</strong> Untuk menjamin pemenuhan tanggung jawab selama masa pemeliharaan pasca proyek selesai.</li><li><strong>Bid Bond:</strong> Digunakan saat mengikuti tender proyek-proyek migas berskala besar.</li><li><strong>Standby LC untuk trading energi/minyak:</strong> Memberikan jaminan pembayaran dalam kontrak ekspor-impor minyak, LNG, atau produk hasil olahan.</li></ul></li><li>SBLC mendukung <strong>kepercayaan lintas negara</strong> dalam pengadaan barang/jasa strategis yang melibatkan partner global.</li><li>Dapat membantu perusahaan <strong>menghindari pembekuan dana tunai</strong> untuk jaminan, karena SBLC bersifat standby dan hanya dicairkan jika terjadi wanprestasi.</li></ul>
+
+             <h4>5. Kontraktor Swasta & Penyedia Barang/Jasa</h4> <p>Kontraktor dan penyedia barang/jasa merupakan pelaku utama dalam eksekusi berbagai proyek, baik skala kecil, menengah, maupun besar. Dalam pelaksanaannya, mereka menghadapi tantangan dalam hal pembiayaan, manajemen risiko, dan kepercayaan antar pihak. Di sinilah penggunaan SKBDN dan SBLC menjadi solusi keuangan yang strategis.</p>
+             <h5>Kebutuhan SKBDN:</h5><ul><li>SKBDN digunakan untuk <strong>mengatur mekanisme pembayaran ke vendor atau sub-kontraktor</strong> yang terlibat dalam proyek konstruksi, pengadaan barang, maupun jasa.</li><li>Umumnya digunakan saat kontraktor melakukan <strong>pembelian barang dalam jumlah besar dan bernilai tinggi</strong>, seperti bahan bangunan, peralatan teknik, atau material proyek lainnya.</li><li>Pembayaran dilakukan <strong>berdasarkan dokumen lengkap</strong> seperti:<ul><li>Purchase Order (PO)</li><li>Delivery Order (DO)</li><li>Invoice</li><li>Surat jalan atau dokumen pendukung lainnya</li></ul></li><li>SKBDN memberikan <strong>jaminan pembayaran</strong> kepada supplier, sehingga mereka bersedia mengirim barang tanpa dibayar di muka.</li><li>Mengurangi <strong>risiko penipuan atau kesalahan pembayaran</strong>, karena seluruh proses berbasis dokumen dan melewati verifikasi bank.</li><li>Sangat berguna dalam proyek <strong>dengan banyak tahap (multi-termin)</strong> atau <strong>multi-vendor</strong>, karena membantu manajemen keuangan dan kontrol pengeluaran.</li></ul>
+             <h5>Kebutuhan SBLC:</h5><ul><li>SBLC diperlukan untuk memberikan <strong>jaminan kepada pihak ketiga</strong> bahwa kontraktor atau penyedia jasa dapat memenuhi komitmennya.</li><li>Beberapa bentuk SBLC yang umum digunakan dalam konteks ini:<ul><li><strong>Performance Bond:</strong> Jaminan bahwa pekerjaan proyek akan dilaksanakan sesuai kontrak.</li><li><strong>Payment Guarantee:</strong> Jaminan bahwa pembayaran kepada vendor atau sub-kontraktor akan dilakukan tepat waktu.</li><li><strong>Advance Payment Guarantee:</strong> Untuk menjamin penggunaan uang muka yang diterima dari pemilik proyek.</li></ul></li><li>SBLC juga <strong>membangun kepercayaan awal</strong>, terutama saat kontraktor belum memiliki riwayat kerja sama panjang dengan pihak pemilik proyek atau vendor besar.</li><li>Dalam proyek swasta maupun kerja sama dengan BUMN, SBLC sering menjadi <strong>prasyarat partisipasi dalam tender atau pengadaan</strong>.</li></ul>
+
+            <h4>6. Importir / Eksportir (Perdagangan Domestik & Internasional)</h4> <p>Dalam dunia perdagangan, baik skala domestik antar wilayah maupun skala internasional lintas negara, faktor <strong>kepercayaan dan keamanan transaksi</strong> menjadi kunci utama. Oleh karena itu, penggunaan instrumen perbankan seperti SKBDN dan SBLC sangat krusial untuk memastikan kepastian pembayaran serta mengelola risiko transaksi.</p>
+            <h5>Kebutuhan SKBDN:</h5><ul><li>SKBDN digunakan untuk <strong>transaksi perdagangan dalam negeri (domestik)</strong>, seperti pengiriman barang dari Surabaya ke Medan.</li><li>Memiliki <strong>fungsi mirip dengan Letter of Credit (LC), namun berlaku secara lokal</strong>.</li><li>Pembayaran <strong>hanya dilakukan jika dokumen pengiriman sesuai dan valid</strong>, seperti:<ul><li>Invoice</li><li>Surat jalan</li><li>Delivery Order (DO)</li><li>Bukti pengiriman (ekspedisi)</li></ul></li><li>Mengurangi <strong>risiko wanprestasi atau keterlambatan pembayaran</strong> dari pihak pembeli (buyer).</li><li>Memberikan <strong>rasa aman bagi penjual (eksportir domestik)</strong> karena pembayaran dijamin oleh bank, bukan hanya kepercayaan antar pihak.</li><li>Cocok untuk sektor distribusi nasional, agribisnis, manufaktur, dan perdagangan besar antar daerah.</li></ul>
+            <h5>Kebutuhan SBLC:</h5><ul><li>SBLC sangat umum digunakan dalam <strong>transaksi perdagangan internasional</strong>, terutama ketika:<ul><li>Buyer dan seller belum memiliki hubungan bisnis yang kuat.</li><li>Nilai transaksi besar dan risiko pengiriman tinggi.</li></ul></li><li>Importir (buyer) sering kali diminta oleh eksportir untuk menerbitkan SBLC sebagai <strong>jaminan pembayaran</strong> apabila barang sudah dikirim sesuai kesepakatan.</li><li>Eksportir juga dapat menggunakan SBLC untuk memberikan <strong>jaminan refund</strong> atau pengembalian dana apabila barang tidak dikirim sesuai spesifikasi kontrak atau terjadi keterlambatan.</li><li>SBLC berfungsi sebagai <strong>alat mitigasi risiko utama</strong> dalam ekspor-impor, karena meminimalkan kerugian finansial akibat wanprestasi, baik dari sisi pembeli maupun penjual.</li><li>Banyak digunakan di sektor komoditas, manufaktur global, teknologi, dan perdagangan bahan baku antar negara.</li></ul>
+        </section>
+        <section id="persyaratan-dokumen-skbdn" class="content-section">
+            <h2>Dokumen SKBDN (Umum untuk Pencairan)</h2> <p>Dokumen-dokumen yang <strong>umumnya</strong> dipersyaratkan oleh penjual untuk pencairan SKBDN antara lain (selalu mengacu pada syarat & kondisi dalam SKBDN yang diterbitkan):</p><ul><li>Invoice Komersial (Commercial Invoice)</li><li>Dokumen Transportasi (misal: Bill of Lading, Air Waybill, Delivery Order/Surat Jalan)</li><li>Packing List (Daftar Pengepakan)</li><li>Dokumen Asuransi (jika dipersyaratkan)</li><li>Dokumen lain sesuai kesepakatan (misal: Certificate of Origin, Inspection Certificate)</li></ul><p><em>Catatan: Untuk penerbitan SKBDN oleh pembeli, dokumen yang diperlukan biasanya adalah formulir aplikasi, underlying transaction (kontrak/PO), dan dokumen legalitas perusahaan.</em></p>
+        </section>
+
+        <section id="persyaratan-dokumen-sblc" class="content-section">
+            <h2>Dokumen SBLC (Umum untuk Klaim)</h2> <p>Dokumen-dokumen yang <strong>umumnya</strong> diperlukan oleh penerima jaminan untuk mengajukan klaim SBLC antara lain (selalu mengacu pada syarat & kondisi dalam SBLC yang diterbitkan):</p><ul><li>Surat Tuntutan Klaim (Demand Letter) dari Beneficiary</li><li>Pernyataan Wanprestasi (Statement of Default) yang menyatakan Applicant gagal memenuhi kewajibannya</li><li>Copy SBLC asli (kadang dipersyaratkan)</li><li>Dokumen lain yang secara spesifik disebutkan dalam klausul SBLC</li></ul><p><em>Catatan: Untuk penerbitan SBLC oleh applicant, dokumen yang diperlukan biasanya adalah formulir aplikasi, underlying contract/agreement, dan dokumen legalitas perusahaan serta pemenuhan syarat kredit/agunan.</em></p>
+        </section>
+
+        <section id="skema-alur-transaksi-skbdn-sight" class="content-section">
+            <h2>Alur Transaksi SKBDN Sight</h2><p>Berikut adalah alur transaksi SKBDN dengan skema Sight Payment, dilihat dari dua posisi Bank BJB Syariah:</p><h3>A. Posisi: Bank bjb Syariah sebagai Bank Penerbit (Issuing Bank)</h3><ol><li><strong>Permintaan Pembukaan:</strong> Nasabah A (Buyer/Applicant), nasabah BJB Syariah, mengajukan permohonan penerbitan SKBDN Sight ke BJB Syariah, melampirkan dokumen pendukung (kontrak/PO, detail transaksi).</li><li><strong>Penerbitan SKBDN:</strong> BJB Syariah memeriksa aplikasi dan kelayakan Nasabah A. Jika disetujui, BJB Syariah menerbitkan SKBDN Sight dan mengirimkannya ke Bank B (Bank Penerus/Advising Bank yang merupakan bank Nasabah B/Seller/Beneficiary).</li><li><strong>Advising ke Seller:</strong> Bank B menerima SKBDN dari BJB Syariah, melakukan otentikasi, dan meneruskannya (advise) kepada Nasabah B (Seller).</li><li><strong>Pengiriman Barang:</strong> Nasabah B (Seller) mengirimkan barang kepada Nasabah A (Buyer) sesuai dengan persyaratan dalam SKBDN.</li><li><strong>Penyerahan Dokumen oleh Seller:</strong> Nasabah B menyiapkan dokumen pengiriman (Invoice, B/L atau DO, Packing List, dll.) sesuai syarat SKBDN dan menyerahkannya ke Bank B.</li><li><strong>Pemeriksaan Awal & Forwarding oleh Bank B:</strong> Bank B melakukan pemeriksaan awal dokumen. Jika dianggap sesuai, Bank B mengirimkan dokumen tersebut ke BJB Syariah (Issuing Bank) untuk pembayaran.</li><li><strong>Pemeriksaan Final oleh BJB Syariah:</strong> BJB Syariah menerima dan memeriksa dokumen secara detail terhadap syarat SKBDN (maksimal 5 hari kerja bank).<ul><li>Jika <strong>Comply (Sesuai):</strong> BJB Syariah akan memproses pembayaran.</li><li>Jika <strong>Discrepancy (Tidak Sesuai):</strong> BJB Syariah akan memberitahu Nasabah A (Buyer) dan meminta keputusan (apakah menerima discrepancy/waiver atau menolak dokumen).</li></ul></li><li><strong>Pembayaran Sight:</strong> Jika dokumen comply atau Nasabah A memberikan waiver, BJB Syariah melakukan pembayaran ke Bank B (biasanya dalam 2 hari kerja setelah dokumen dinyatakan comply/ada waiver, total maks 7 hari kerja sejak dokumen diterima BJB Syariah). Pembayaran bisa berasal dari dana Nasabah A atau fasilitas pembiayaan Nasabah A di BJB Syariah.</li><li><strong>Penerusan Pembayaran:</strong> Bank B menerima dana dari BJB Syariah dan meneruskannya ke rekening Nasabah B (Seller).</li><li><strong>Penyerahan Dokumen ke Buyer:</strong> BJB Syariah menyerahkan dokumen pengiriman kepada Nasabah A (Buyer) setelah pembayaran dilakukan (atau sesuai kesepakatan).</li></ol><h3>B. Posisi: Bank bjb Syariah sebagai Bank Penerima (Advising Bank / Negotiating Bank)</h3><ol><li><strong>Penerimaan SKBDN:</strong> BJB Syariah menerima SKBDN Sight yang diterbitkan oleh Bank XYZ (Issuing Bank, banknya Nasabah A/Buyer) untuk keuntungan Nasabah B (Seller/Beneficiary), yang merupakan nasabah BJB Syariah.</li><li><strong>Otentikasi & Advising:</strong> BJB Syariah melakukan otentikasi keaslian SKBDN dari Bank XYZ. Jika asli, BJB Syariah meneruskan (advise) SKBDN tersebut kepada Nasabah B (Seller).</li><li><strong>Pengiriman Barang:</strong> Nasabah B (Seller) mengirimkan barang kepada Nasabah A (Buyer) sesuai SKBDN.</li><li><strong>Penyerahan Dokumen ke BJB Syariah:</strong> Nasabah B (Seller) menyiapkan dokumen pengiriman sesuai syarat SKBDN dan menyerahkannya ke BJB Syariah (sebagai bank yang ditunjuk untuk negosiasi/pembayaran).</li><li><strong>Pemeriksaan Dokumen oleh BJB Syariah:</strong> BJB Syariah memeriksa kelengkapan dan kesesuaian dokumen yang diserahkan Nasabah B terhadap syarat SKBDN.<ul><li>Jika <strong>Comply (Sesuai):</strong> BJB Syariah akan meneruskan dokumen ke Bank XYZ.</li><li>Jika <strong>Discrepancy (Tidak Sesuai):</strong> BJB Syariah akan menginformasikan Nasabah B untuk perbaikan atau meminta persetujuan mengirim dokumen 'as is' (dengan risiko ditolak Bank XYZ).</li></ul></li><li><strong>Forwarding Dokumen ke Issuing Bank:</strong> Jika dokumen comply (atau sesuai instruksi Nasabah B), BJB Syariah mengirimkan dokumen tersebut ke Bank XYZ (Issuing Bank) dan meminta pembayaran (reimbursement).</li><li><strong>Pemeriksaan oleh Issuing Bank:</strong> Bank XYZ menerima dan memeriksa dokumen dari BJB Syariah.</li><li><strong>Pembayaran dari Issuing Bank:</strong> Jika Bank XYZ menyatakan dokumen comply, Bank XYZ akan melakukan pembayaran ke BJB Syariah.</li><li><strong>Penerusan Pembayaran ke Seller:</strong> Setelah menerima dana dari Bank XYZ, BJB Syariah mengkreditkan dana tersebut ke rekening Nasabah B (Seller), setelah dipotong biaya BJB Syariah (jika ada dan dibebankan ke Seller).</li></ol><hr style="margin: 2em 0;"> <h3>Contoh Transaksi SKBDN – Skema Sight Payment (Ilustrasi Detail)</h3><h4>A. Posisi: Bank bjb Syariah sebagai Bank Penerbit (Issuing Bank)</h4><p><strong>🧾 Deskripsi Umum:</strong></p><ul><li><strong>Buyer (Pemohon):</strong> Nasabah A (nasabah bank bjb syariah)</li><li><strong>Seller (Penerima):</strong> Nasabah B</li><li><strong>Barang:</strong> Alat berat</li><li><strong>Skema:</strong> Sight Payment (pembayaran paling lambat 7 (tujuh) hari kerja sejak tagihan pembayaran Sight SKBDN diterbitkan.)</li><li><strong>Jenis SKBDN:</strong> Irrevocable SKBDN</li><li><strong>Bank Penerbit (Issuing Bank):</strong> bank bjb syariah</li><li><strong>Bank Penerus/Advising:</strong> Bank B (Bank Nasabah B)</li></ul><p><strong>🔄 Alur Transaksi (Ringkas):</strong></p><ol><li>Permintaan → Penerbitan (BJB Syariah ke Bank B) → Advising (Bank B ke Nasabah B) → Kirim Barang → Serah Dokumen (Nasabah B ke Bank B) → Forward Dokumen (Bank B ke BJB Syariah) → Periksa Dokumen (BJB Syariah) → Bayar (BJB Syariah ke Bank B) → Terima Bayar (Bank B ke Nasabah B) → Serah Dokumen (BJB Syariah ke Nasabah A)</li></ol><p><strong>💸 Aliran Dana:</strong> Buyer → BJB Syariah → Bank B → Seller.</p><p><strong>📈 Pendapatan Bank bjb syariah:</strong> Fee Buka, Fee Handling, Fee Komunikasi, Margin Pembiayaan (jika ada).</p><p><strong>🧩 Catatan:</strong> Risiko kredit BJB Syariah ada pada Buyer (Nasabah A).</p><h4>B. Posisi: Bank bjb Syariah sebagai Bank Penerima (Advising Bank / Negotiating Bank)</h4><p><strong>🧾 Deskripsi Umum:</strong></p><ul><li><strong>Buyer (Pemohon):</strong> Nasabah A (Nasabah Bank XYZ)</li><li><strong>Seller (Penerima):</strong> Nasabah B (nasabah bank bjb syariah)</li><li><strong>Barang:</strong> Alat berat</li><li><strong>Skema:</strong> Sight Payment</li><li><strong>Bank Penerbit (Issuing Bank):</strong> Bank XYZ</li><li><strong>Bank Penerima (Advising/Negotiating Bank):</strong> bank bjb syariah</li></ul><p><strong>🔄 Alur Transaksi (Ringkas):</strong></p><ol><li>Terima SKBDN (dari Bank XYZ) → Otentikasi & Advise (ke Nasabah B) → Kirim Barang → Serah Dokumen (Nasabah B ke BJB Syariah) → Periksa Dokumen (BJB Syariah) → Forward Dokumen (BJB Syariah ke Bank XYZ) → Terima Bayar (dari Bank XYZ) → Bayar Seller (BJB Syariah ke Nasabah B)</li></ol><p><strong>💸 Aliran Dana:</strong> Bank XYZ → BJB Syariah → Seller.</p><p><strong>📈 Pendapatan Bank bjb syariah:</strong> Fee Advising, Fee Handling/Negotiation, Fee Komunikasi.</p><p><strong>🧩 Catatan:</strong> Risiko kredit BJB Syariah umumnya tidak ada (kecuali jika ada konfirmasi), namun ada risiko operasional (pemeriksaan dokumen) dan risiko settlement dari Bank XYZ.</p>
+        </section>
+
+        <section id="skema-alur-transaksi-skbdn-usance" class="content-section">
+            <h2>Alur Transaksi SKBDN Usance (Pembayaran Berjangka)</h2><p>SKBDN Usance memberikan jangka waktu pembayaran kepada pembeli setelah dokumen diserahkan dan diaksep oleh bank penerbit.</p><h3>A. Posisi: Bank bjb Syariah sebagai Bank Penerbit (Issuing Bank)</h3><ol><li><strong>Permintaan Pembukaan:</strong> Nasabah A (Buyer/Applicant), nasabah BJB Syariah, mengajukan penerbitan SKBDN Usance (misal 90 hari setelah tanggal B/L) ke BJB Syariah.</li><li><strong>Penerbitan SKBDN:</strong> BJB Syariah menerbitkan SKBDN Usance dan mengirimkannya ke Bank B (Bank Penerus/Advising Bank).</li><li><strong>Advising ke Seller:</strong> Bank B menerima, otentikasi, dan advise SKBDN Usance ke Nasabah B (Seller).</li><li><strong>Pengiriman Barang:</strong> Nasabah B (Seller) mengirimkan barang sesuai SKBDN.</li><li><strong>Penyerahan Dokumen & Draft oleh Seller:</strong> Nasabah B menyiapkan dokumen pengiriman DAN Wesel Berjangka (Draft) yang ditarik atas BJB Syariah dengan tenor 90 hari setelah tanggal B/L. Dokumen dan Draft diserahkan ke Bank B.</li><li><strong>Forwarding Dokumen & Draft:</strong> Bank B memeriksa awal, lalu mengirimkan dokumen dan draft ke BJB Syariah.</li><li><strong>Pemeriksaan & Akseptasi oleh BJB Syariah:</strong> BJB Syariah menerima dan memeriksa dokumen. Jika comply, BJB Syariah mengaksep (Acceptance) Draft tersebut dengan menandatangani/memberi stempel, yang merupakan janji bayar BJB Syariah pada saat jatuh tempo (90 hari setelah tanggal B/L).</li><li><strong>Pengembalian Draft Aksep & Penyerahan Dokumen:</strong> Draft yang telah diaksep dikembalikan ke Bank B untuk diteruskan ke Nasabah B. Dokumen pengiriman diserahkan oleh BJB Syariah kepada Nasabah A (Buyer).</li><li><strong>Opsi bagi Seller:</strong> Nasabah B memegang Draft Aksep. Ia bisa:<ul><li>Menunggu hingga jatuh tempo untuk dibayar penuh oleh BJB Syariah.</li><li>Menjual/mendiskontokan Draft Aksep tersebut ke Bank B atau bank lain (termasuk BJB Syariah jika memungkinkan) untuk mendapatkan dana lebih awal (dengan potongan biaya diskonto).</li></ul></li><li><strong>Pembayaran Saat Jatuh Tempo:</strong> Pada tanggal jatuh tempo Draft, pemegang Draft (Nasabah B atau bank yang mendiskontokan) mempresentasikannya ke BJB Syariah untuk pembayaran. BJB Syariah wajib membayar.</li><li><strong>Penagihan ke Buyer:</strong> Pada tanggal jatuh tempo yang sama, BJB Syariah mendebet rekening Nasabah A (Buyer) sebesar nilai Draft.</li></ol><h3>B. Posisi: Bank bjb Syariah sebagai Bank Penerima (Advising Bank / Negotiating Bank)</h3><ol><li><strong>Penerimaan & Advising SKBDN:</strong> BJB Syariah menerima SKBDN Usance (misal 60 hari setelah invoice) dari Bank XYZ (Issuing Bank) untuk Nasabah B (Seller, nasabah BJB Syariah). BJB Syariah otentikasi dan advise ke Nasabah B.</li><li><strong>Pengiriman Barang:</strong> Nasabah B (Seller) mengirim barang.</li><li><strong>Penyerahan Dokumen & Draft ke BJB Syariah:</strong> Nasabah B menyiapkan dokumen pengiriman dan Draft Usance 60 hari ditarik atas Bank XYZ, lalu menyerahkannya ke BJB Syariah.</li><li><strong>Pemeriksaan Dokumen & Draft oleh BJB Syariah:</strong> BJB Syariah memeriksa dokumen dan draft terhadap syarat SKBDN.</li><li><strong>Forwarding ke Issuing Bank untuk Akseptasi:</strong> Jika comply, BJB Syariah mengirim dokumen dan draft ke Bank XYZ (Issuing Bank) untuk diaksep.</li><li><strong>Penerimaan Draft Aksep dari Issuing Bank:</strong> Bank XYZ memeriksa, mengaksep draft, dan mengembalikannya ke BJB Syariah.</li><li><strong>Penyerahan Draft Aksep ke Seller:</strong> BJB Syariah menyerahkan Draft yang telah diaksep oleh Bank XYZ kepada Nasabah B.</li><li><strong>Opsi Diskonto di BJB Syariah:</strong> Nasabah B dapat meminta BJB Syariah untuk mendiskontokan Draft Aksep dari Bank XYZ tersebut. BJB Syariah akan menilai risiko Bank XYZ dan Nasabah B sebelum memutuskan untuk mendiskontokan. Jika ya, BJB Syariah membayar Nasabah B lebih awal (dikurangi biaya diskonto).</li><li><strong>Presentasi Saat Jatuh Tempo:</strong> Pada saat jatuh tempo Draft, BJB Syariah (jika mendiskontokan) atau Nasabah B (jika tidak) akan mempresentasikannya ke Bank XYZ untuk pembayaran.</li><li><strong>Penerimaan Pembayaran dari Issuing Bank:</strong> Bank XYZ membayar nilai Draft kepada BJB Syariah (jika BJB Syariah yang presentasi) atau langsung ke Nasabah B (jika Nasabah B yang presentasi melalui BJB Syariah).</li><li><strong>Penerusan Pembayaran (jika relevan):</strong> Jika pembayaran diterima BJB Syariah, dana diteruskan ke Nasabah B (jika belum didiskontokan).</li></ol><hr style="margin: 2em 0;"> <h3>Contoh Transaksi SKBDN – Skema Usance Payment (Ilustrasi Detail)</h3><h4>A. Posisi: Bank bjb Syariah sebagai Bank Penerbit (Issuing Bank)</h4><p><strong>🧾 Deskripsi Umum:</strong></p><ul><li><strong>Buyer (Pemohon):</strong> Nasabah A (nasabah bank bjb syariah)</li><li><strong>Seller (Penerima):</strong> Nasabah B</li><li><strong>Barang:</strong> Bahan Baku Industri</li><li><strong>Skema:</strong> Usance Payment 90 hari setelah tanggal Bill of Lading (B/L).</li><li><strong>Jenis SKBDN:</strong> Irrevocable SKBDN Available by Acceptance.</li><li><strong>Bank Penerbit (Issuing Bank):</strong> bank bjb syariah</li><li><strong>Bank Penerus/Advising:</strong> Bank B (Bank Nasabah B)</li></ul><p><strong>🔄 Alur Transaksi (Ringkas):</strong></p><ol><li>Permintaan → Penerbitan (BJB Syariah ke Bank B) → Advising (Bank B ke Nasabah B) → Kirim Barang → Serah Dokumen+Draft (Nasabah B ke Bank B) → Forward Dokumen+Draft (Bank B ke BJB Syariah) → Periksa & Aksep Draft (BJB Syariah) → Kembalikan Draft Aksep (BJB Syariah ke Bank B/Nasabah B) & Serah Dokumen (BJB Syariah ke Nasabah A) → [Opsi Diskonto Draft oleh Seller] → Presentasi Draft saat Jatuh Tempo → Bayar Draft (BJB Syariah ke Pemegang Draft) & Debet Buyer (BJB Syariah dari Nasabah A)</li></ol><p><strong>💸 Aliran Dana:</strong> Buyer → BJB Syariah (saat jatuh tempo). BJB Syariah → Pemegang Draft (saat jatuh tempo).</p><p><strong>📈 Pendapatan Bank bjb syariah:</strong> Fee Buka, Fee Akseptasi, Fee Handling, Fee Komunikasi, Potensi Margin (jika Buyer pakai fasilitas).</p><p><strong>🧩 Catatan:</strong> BJB Syariah berjanji bayar saat akseptasi. Risiko kredit pada Buyer.</p><h4>B. Posisi: Bank bjb Syariah sebagai Bank Penerima (Advising / Negotiating Bank)</h4><p><strong>🧾 Deskripsi Umum:</strong></p><ul><li><strong>Buyer (Pemohon):</strong> Nasabah A (Nasabah Bank XYZ)</li><li><strong>Seller (Penerima):</strong> Nasabah B (nasabah bank bjb syariah)</li><li><strong>Barang:</strong> Komponen Elektronik</li><li><strong>Skema:</strong> Usance Payment 60 hari setelah tanggal Invoice.</li><li><strong>Bank Penerbit (Issuing Bank):</strong> Bank XYZ</li><li><strong>Bank Penerima (Advising/Negotiating Bank):</strong> bank bjb syariah</li></ul><p><strong>🔄 Alur Transaksi (Ringkas):</strong></p><ol><li>Terima SKBDN (dari Bank XYZ) → Advise (ke Nasabah B) → Kirim Barang → Serah Dokumen+Draft (Nasabah B ke BJB Syariah) → Periksa Dokumen+Draft (BJB Syariah) → Forward (BJB Syariah ke Bank XYZ) → Terima Draft Aksep (dari Bank XYZ) → Serah Draft Aksep (ke Nasabah B) → [Opsi Diskonto Draft oleh BJB Syariah] → Presentasi Draft saat Jatuh Tempo (ke Bank XYZ) → Terima Bayar (dari Bank XYZ) → Bayar Seller (jika belum diskonto)</li></ol><p><strong>💸 Aliran Dana:</strong> Bank XYZ → BJB Syariah/Seller (saat jatuh tempo).</p><p><strong>📈 Pendapatan Bank bjb syariah:</strong> Fee Advising, Fee Handling/Negotiation, Fee Komunikasi, Potensi Bunga Diskonto (jika mendiskontokan).</p><p><strong>🧩 Catatan:</strong> Risiko kredit BJB Syariah ada pada Bank XYZ jika BJB Syariah mendiskontokan draft.</p>
+        </section>
+
+        <section id="skema-alur-transaksi-skbdn-upas" class="content-section">
+            <h2>Alur Transaksi SKBDN UPAS (Usance Payable At Sight)</h2><p>SKBDN UPAS memungkinkan penjual dibayar segera (seperti Sight) sementara pembeli mendapat tenor pembayaran (seperti Usance), dengan pembiayaan dari bank.</p><h3>A. Posisi: Bank bjb Syariah sebagai Bank Penerbit (Issuing Bank) & Financing Bank</h3><ol><li><strong>Permintaan Pembukaan:</strong> Nasabah A (Buyer/Applicant), nasabah BJB Syariah yang memiliki fasilitas pembiayaan UPAS, mengajukan penerbitan SKBDN UPAS (misal 120 hari) ke BJB Syariah.</li><li><strong>Penerbitan SKBDN:</strong> BJB Syariah menerbitkan SKBDN UPAS yang menyatakan pembayaran kepada Beneficiary adalah 'at sight', namun Applicant akan membayar BJB Syariah 120 hari kemudian. SKBDN dikirim ke Bank B (Advising Bank).</li><li><strong>Advising ke Seller:</strong> Bank B menerima, otentikasi, dan advise SKBDN UPAS ke Nasabah B (Seller).</li><li><strong>Pengiriman Barang:</strong> Nasabah B (Seller) mengirimkan barang.</li><li><strong>Penyerahan Dokumen oleh Seller:</strong> Nasabah B menyiapkan dokumen pengiriman dan menyerahkannya ke Bank B.</li><li><strong>Forwarding Dokumen:</strong> Bank B memeriksa awal dan mengirimkan dokumen ke BJB Syariah.</li><li><strong>Pemeriksaan Dokumen oleh BJB Syariah:</strong> BJB Syariah menerima dan memeriksa dokumen.</li><li><strong>Pembayaran 'Sight' ke Seller & Pembiayaan ke Buyer:</strong> Jika dokumen comply, BJB Syariah segera melakukan pembayaran ke Bank B untuk diteruskan ke Nasabah B. Secara internal, BJB Syariah mencatat pembayaran ini sebagai pencairan fasilitas pembiayaan UPAS kepada Nasabah A (Buyer) dengan jatuh tempo 120 hari + margin/bunga.</li><li><strong>Penerusan Pembayaran:</strong> Bank B menerima dana dari BJB Syariah dan mengkreditkan ke rekening Nasabah B (Seller).</li><li><strong>Menunggu Jatuh Tempo Pembiayaan:</strong> Nasabah A (Buyer) menggunakan barang dan memiliki waktu 120 hari sebelum membayar BJB Syariah.</li><li><strong>Pembayaran oleh Buyer Saat Jatuh Tempo:</strong> Pada hari ke-120, Nasabah A membayar BJB Syariah sebesar nilai SKBDN ditambah margin/bunga pembiayaan UPAS.</li></ol><h3>B. Posisi: Bank bjb Syariah sebagai Bank Penerima (Advising Bank / Financing Bank)</h3><ol><li><strong>Penerimaan & Advising SKBDN:</strong> BJB Syariah menerima SKBDN UPAS (misal 90 hari) dari Bank XYZ (Issuing Bank). SKBDN ini menunjuk BJB Syariah sebagai Advising Bank dan sekaligus Financing Bank (bank yang akan membayar Seller 'at sight' dan menagih reimbursement + biaya ke Bank XYZ). BJB Syariah otentikasi dan advise ke Nasabah B (Seller, nasabah BJB Syariah).</li><li><strong>Pengiriman Barang:</strong> Nasabah B (Seller) mengirimkan barang.</li><li><strong>Penyerahan Dokumen ke BJB Syariah:</strong> Nasabah B menyiapkan dokumen pengiriman dan menyerahkannya ke BJB Syariah.</li><li><strong>Pemeriksaan Dokumen oleh BJB Syariah:</strong> BJB Syariah memeriksa dokumen terhadap syarat SKBDN UPAS.</li><li><strong>Pembayaran 'Sight' ke Seller oleh BJB Syariah:</strong> Jika dokumen comply, BJB Syariah segera membayar Nasabah B (Seller) menggunakan dana BJB Syariah sendiri (sebagai Financing Bank).</li><li><strong>Forwarding Dokumen & Klaim Reimbursement:</strong> BJB Syariah mengirimkan dokumen yang comply ke Bank XYZ (Issuing Bank) dan mengajukan klaim reimbursement sebesar nilai pembayaran ditambah biaya/bunga pembiayaan UPAS untuk 90 hari.</li><li><strong>Pemeriksaan oleh Issuing Bank:</strong> Bank XYZ menerima dan memeriksa dokumen.</li><li><strong>Pembayaran Reimbursement dari Issuing Bank:</strong> Jika Bank XYZ setuju dokumen comply, Bank XYZ melakukan pembayaran reimbursement + biaya pembiayaan kepada BJB Syariah.</li><li><strong>Penyelesaian antara Issuing Bank & Buyer:</strong> Secara terpisah, Bank XYZ akan menagih Nasabah A (Buyer) pada saat jatuh tempo 90 hari.</li></ol><hr style="margin: 2em 0;"> <h3>Contoh Transaksi SKBDN – Skema UPAS Payment (Ilustrasi Detail)</h3><h4>A. Posisi: Bank bjb Syariah sebagai Bank Penerbit (Issuing Bank) & Financing Bank</h4><p><strong>🧾 Deskripsi Umum:</strong></p><ul><li><strong>Buyer (Pemohon):</strong> Nasabah A (nasabah bank bjb syariah, memiliki fasilitas UPAS)</li><li><strong>Seller (Penerima):</strong> Nasabah B</li><li><strong>Barang:</strong> Mesin Manufaktur</li><li><strong>Skema:</strong> UPAS 120 hari. Seller dibayar 'at sight', Buyer membayar BJB Syariah 120 hari kemudian.</li><li><strong>Jenis SKBDN:</strong> Irrevocable SKBDN UPAS.</li><li><strong>Bank Penerbit & Financing Bank:</strong> bank bjb syariah</li><li><strong>Bank Penerus/Advising:</strong> Bank B (Bank Nasabah B)</li></ul><p><strong>🔄 Alur Transaksi (Ringkas):</strong></p><ol><li>Permintaan → Penerbitan (BJB Syariah ke Bank B) → Advising (Bank B ke Nasabah B) → Kirim Barang → Serah Dokumen (Nasabah B ke Bank B) → Forward Dokumen (Bank B ke BJB Syariah) → Periksa Dokumen (BJB Syariah) → Bayar 'Sight' (BJB Syariah ke Bank B/Nasabah B) & Catat Pembiayaan ke Buyer → Tunggu 120 Hari → Terima Bayar + Margin (dari Nasabah A)</li></ol><p><strong>💸 Aliran Dana:</strong> BJB Syariah → Bank B → Seller (segera). Buyer → BJB Syariah (setelah 120 hari + margin).</p><p><strong>📈 Pendapatan Bank bjb syariah:</strong> Fee Buka, Fee Handling, Fee Komunikasi, Margin Pembiayaan UPAS.</p><p><strong>🧩 Catatan:</strong> Risiko kredit BJB Syariah pada Buyer. Seller dibayar cepat.</p><h4>B. Posisi: Bank bjb Syariah sebagai Bank Penerima (Advising Bank / Financing Bank)</h4><p><strong>🧾 Deskripsi Umum:</strong></p><ul><li><strong>Buyer (Pemohon):</strong> Nasabah A (Nasabah Bank XYZ)</li><li><strong>Seller (Penerima):</strong> Nasabah B (nasabah bank bjb syariah)</li><li><strong>Barang:</strong> Produk Kimia</li><li><strong>Skema:</strong> UPAS 90 hari. Seller dibayar 'at sight' oleh Financing Bank, Buyer membayar Issuing Bank 90 hari kemudian.</li><li><strong>Bank Penerbit (Issuing Bank):</strong> Bank XYZ</li><li><strong>Bank Penerima (Advising & Financing Bank):</strong> bank bjb syariah</li></ul><p><strong>🔄 Alur Transaksi (Ringkas):</strong></p><ol><li>Terima SKBDN (dari Bank XYZ) → Advise (ke Nasabah B) → Kirim Barang → Serah Dokumen (Nasabah B ke BJB Syariah) → Periksa Dokumen (BJB Syariah) → Bayar 'Sight' Seller (oleh BJB Syariah) → Forward Dokumen & Klaim Reimbursement+Biaya (BJB Syariah ke Bank XYZ) → Terima Reimbursement+Biaya (dari Bank XYZ)</li></ol><p><strong>💸 Aliran Dana:</strong> BJB Syariah → Seller (segera). Bank XYZ → BJB Syariah (reimbursement + biaya).</p><p><strong>📈 Pendapatan Bank bjb syariah:</strong> Fee Advising, Fee Handling, Fee Komunikasi, Bunga/Margin Pembiayaan UPAS (dari reimbursement).</p><p><strong>🧩 Catatan:</strong> Risiko kredit BJB Syariah pada Bank XYZ. Seller dibayar cepat.</p>
+        </section>
+
+        <section id="skema-alur-transaksi-skbdn-upau" class="content-section">
+            <h2>Alur Transaksi SKBDN UPAU (Usance Payable After Usance)</h2><p>SKBDN UPAU melibatkan dua periode usance: satu untuk akseptasi draft penjual, dan satu lagi sebagai periode pembiayaan bagi pembeli setelah draft pertama dibayar.</p><h3>A. Posisi: Bank bjb Syariah sebagai Bank Penerbit (Issuing Bank) & Financing Bank</h3><ol><li><strong>Permintaan Pembukaan:</strong> Nasabah A (Buyer/Applicant), nasabah BJB Syariah, mengajukan penerbitan SKBDN UPAU (misal 30 hari usance + 60 hari financing) ke BJB Syariah.</li><li><strong>Penerbitan SKBDN:</strong> BJB Syariah menerbitkan SKBDN UPAU yang mencantumkan dua tenor tersebut dan mengirimkannya ke Bank B (Advising Bank).</li><li><strong>Advising ke Seller:</strong> Bank B menerima, otentikasi, dan advise SKBDN UPAU ke Nasabah B (Seller).</li><li><strong>Pengiriman Barang:</strong> Nasabah B (Seller) mengirimkan barang.</li><li><strong>Penyerahan Dokumen & Draft Usance Awal:</strong> Nasabah B menyiapkan dokumen pengiriman dan Draft Usance 30 hari yang ditarik atas BJB Syariah. Dokumen dan Draft diserahkan ke Bank B.</li><li><strong>Forwarding Dokumen & Draft:</strong> Bank B memeriksa awal, lalu mengirimkan dokumen dan draft ke BJB Syariah.</li><li><strong>Pemeriksaan & Akseptasi Draft Awal oleh BJB Syariah:</strong> BJB Syariah memeriksa dokumen. Jika comply, BJB Syariah mengaksep Draft 30 hari tersebut.</li><li><strong>Pengembalian Draft Aksep:</strong> Draft yang telah diaksep dikembalikan ke Bank B untuk diteruskan ke Nasabah B.</li><li><strong>Jatuh Tempo Draft Awal & Pembayaran ke Seller:</strong> Setelah 30 hari, pemegang Draft (Nasabah B atau bank lain jika didiskontokan) mempresentasikannya ke BJB Syariah. BJB Syariah membayar nilai Draft tersebut.</li><li><strong>Pembiayaan UPAU Dimulai:</strong> Pembayaran Draft oleh BJB Syariah ini secara internal dicatat sebagai pencairan fasilitas pembiayaan UPAU kepada Nasabah A (Buyer) untuk tenor 60 hari berikutnya + margin/bunga.</li><li><strong>Penyerahan Dokumen ke Buyer:</strong> Dokumen pengiriman diserahkan oleh BJB Syariah kepada Nasabah A (Buyer) (biasanya setelah akseptasi draft awal).</li><li><strong>Menunggu Jatuh Tempo Pembiayaan:</strong> Nasabah A (Buyer) menunggu 60 hari lagi.</li><li><strong>Pembayaran oleh Buyer Saat Jatuh Tempo Akhir:</strong> Setelah total 90 hari (30+60), Nasabah A membayar BJB Syariah sebesar nilai SKBDN ditambah margin/bunga pembiayaan UPAU.</li></ol><h3>B. Posisi: Bank bjb Syariah sebagai Bank Penerima (Advising Bank / Negotiating Bank)</h3><p><em>(Seperti disebutkan, peran Financing Bank dalam UPAU biasanya dipegang Issuing Bank. Skenario BJB Syariah sebagai Financing Bank UPAU dari bank lain sangat jarang. Fokus di sini adalah sebagai Advising/Negotiating Bank untuk draft usance awal).</em></p><ol><li><strong>Penerimaan & Advising SKBDN:</strong> BJB Syariah menerima SKBDN UPAU (misal 45 hari usance + 45 hari financing oleh Bank XYZ) dari Bank XYZ (Issuing Bank) untuk Nasabah B (Seller, nasabah BJB Syariah). BJB Syariah otentikasi dan advise ke Nasabah B.</li><li><strong>Pengiriman Barang:</strong> Nasabah B (Seller) mengirim barang.</li><li><strong>Penyerahan Dokumen & Draft Usance Awal ke BJB Syariah:</strong> Nasabah B menyiapkan dokumen pengiriman dan Draft Usance 45 hari ditarik atas Bank XYZ, lalu menyerahkannya ke BJB Syariah.</li><li><strong>Pemeriksaan Dokumen & Draft oleh BJB Syariah:</strong> BJB Syariah memeriksa dokumen dan draft terhadap syarat SKBDN.</li><li><strong>Forwarding ke Issuing Bank untuk Akseptasi:</strong> Jika comply, BJB Syariah mengirim dokumen dan draft ke Bank XYZ (Issuing Bank) untuk diaksep.</li><li><strong>Penerimaan Draft Aksep dari Issuing Bank:</strong> Bank XYZ memeriksa, mengaksep draft 45 hari, dan mengembalikannya ke BJB Syariah.</li><li><strong>Penyerahan Draft Aksep ke Seller:</strong> BJB Syariah menyerahkan Draft yang telah diaksep oleh Bank XYZ kepada Nasabah B.</li><li><strong>Opsi Diskonto Draft Aksep di BJB Syariah:</strong> Nasabah B dapat meminta BJB Syariah untuk mendiskontokan Draft Aksep 45 hari ini.</li><li><strong>Presentasi Saat Jatuh Tempo Draft Awal:</strong> Setelah 45 hari, pemegang Draft (Nasabah B atau BJB Syariah jika mendiskontokan) mempresentasikannya ke Bank XYZ untuk pembayaran.</li><li><strong>Pembayaran Draft Awal oleh Issuing Bank:</strong> Bank XYZ membayar nilai Draft tersebut. (Proses pembiayaan UPAU selanjutnya antara Bank XYZ dan Buyer).</li><li><strong>Penerusan Pembayaran (jika relevan):</strong> Jika pembayaran diterima BJB Syariah (karena mendiskontokan), proses selesai di sisi BJB Syariah. Jika tidak mendiskontokan, BJB Syariah hanya membantu presentasi dan meneruskan dana ke Nasabah B jika melalui BJB Syariah.</li></ol><hr style="margin: 2em 0;"> <h3>Contoh Transaksi SKBDN – Skema UPAU Payment (Ilustrasi Detail)</h3><p><em>Catatan: Skema UPAU lebih jarang ditemui dalam praktik dibandingkan UPAS. Contoh ini bersifat ilustratif.</em></p><h4>A. Posisi: Bank bjb Syariah sebagai Bank Penerbit (Issuing Bank) & Financing Bank</h4><p><strong>🧾 Deskripsi Umum:</strong></p><ul><li><strong>Buyer (Pemohon):</strong> Nasabah A (nasabah bank bjb syariah)</li><li><strong>Seller (Penerima):</strong> Nasabah B</li><li><strong>Barang:</strong> Peralatan Pertanian</li><li><strong>Skema:</strong> UPAU. Usance awal 30 hari (akseptasi), diikuti pembiayaan UPAU 60 hari. Total tenor untuk buyer 90 hari.</li><li><strong>Jenis SKBDN:</strong> Irrevocable SKBDN UPAU.</li><li><strong>Bank Penerbit & Financing Bank:</strong> bank bjb syariah</li><li><strong>Bank Penerus/Advising:</strong> Bank B (Bank Nasabah B)</li></ul><p><strong>🔄 Alur Transaksi (Ringkas):</strong></p><ol><li>Permintaan → Penerbitan (BJB Syariah ke Bank B) → Advising (Bank B ke Nasabah B) → Kirim Barang → Serah Dokumen+Draft 30hr (Nasabah B ke Bank B) → Forward (Bank B ke BJB Syariah) → Periksa & Aksep Draft 30hr (BJB Syariah) → Kembalikan Draft Aksep → [Opsi Diskonto Draft oleh Seller] → Presentasi Draft setelah 30hr → Bayar Draft (BJB Syariah ke Pemegang Draft) & Catat Pembiayaan UPAU 60hr ke Buyer → Tunggu 60hr → Terima Bayar + Margin (dari Nasabah A)</li></ol><p><strong>💸 Aliran Dana:</strong> BJB Syariah → Pemegang Draft (setelah 30 hari). Buyer → BJB Syariah (setelah 90 hari + margin).</p><p><strong>📈 Pendapatan Bank bjb syariah:</strong> Fee Buka, Fee Akseptasi, Fee Handling, Fee Komunikasi, Margin Pembiayaan UPAU.</p><p><strong>🧩 Catatan:</strong> Kompleks. Risiko kredit pada Buyer untuk periode financing.</p><h4>B. Posisi: Bank bjb Syariah sebagai Bank Penerima (Advising Bank / Negotiating Bank)</h4><p><strong>🧾 Deskripsi Umum:</strong></p><ul><li><strong>Buyer (Pemohon):</strong> Nasabah A (Nasabah Bank XYZ)</li><li><strong>Seller (Penerima):</strong> Nasabah B (nasabah bank bjb syariah)</li><li><strong>Barang:</strong> Tekstil</li><li><strong>Skema:</strong> UPAU (misal: 45 hari usance + 45 hari financing oleh Bank XYZ).</li><li><strong>Bank Penerbit (Issuing & Financing Bank):</strong> Bank XYZ</li><li><strong>Bank Penerima (Advising/Negotiating):</strong> bank bjb syariah</li></ul><p><strong>🔄 Alur Transaksi (Ringkas - Fokus BJB Syariah):</strong></p><ol><li>Terima SKBDN → Advise → Terima Dokumen+Draft 45hr → Periksa → Forward ke Bank XYZ → Terima Draft Aksep → Serah ke Nasabah B → [Opsi Diskonto oleh BJB Syariah] → Presentasi Draft setelah 45hr ke Bank XYZ → Terima Bayar (jika diskonto) / Bantu teruskan bayar ke Nasabah B</li></ol><p><strong>💸 Aliran Dana (Fokus BJB Syariah):</strong> Bank XYZ → BJB Syariah (jika diskonto, setelah 45hr). BJB Syariah → Nasabah B (jika diskonto, lebih awal).</p><p><strong>📈 Pendapatan Bank bjb syariah:</strong> Fee Advising, Fee Handling/Negotiation, Fee Komunikasi, Potensi Bunga Diskonto.</p><p><strong>🧩 Catatan:</strong> Peran utama BJB Syariah adalah pada tahap awal (advising, negosiasi draft usance awal). Risiko kredit pada Bank XYZ jika mendiskontokan.</p>
+        </section>
+
+        <section id="skema-alur-transaksi-skbdn" class="content-section">
+            <h2>Skema Alur Transaksi SKBDN (Gambaran Umum)</h2><p>Berikut adalah ringkasan langkah-langkah umum dalam transaksi SKBDN:</p><ol><li><strong>Kesepakatan:</strong> Pembeli (Applicant) dan Penjual (Beneficiary) menyepakati penggunaan SKBDN dalam kontrak penjualan.</li><li><strong>Aplikasi:</strong> Pembeli mengajukan permohonan penerbitan SKBDN ke banknya (Bank Penerbit/Issuing Bank).</li><li><strong>Penerbitan:</strong> Bank Penerbit menerbitkan SKBDN sesuai aplikasi dan mengirimkannya ke bank Penjual (Bank Penerus/Advising Bank) atau bank lain yang ditunjuk.</li><li><strong>Advis/Pemberitahuan:</strong> Bank Penerus memberitahukan/meneruskan SKBDN kepada Penjual.</li><li><strong>Pengiriman Barang:</strong> Setelah menerima SKBDN yang sesuai, Penjual mengirimkan barang kepada Pembeli.</li><li><strong>Penyiapan & Penyerahan Dokumen:</strong> Penjual menyiapkan dokumen yang disyaratkan dalam SKBDN (Invoice, Dokumen Transport, dll.) dan menyerahkannya kepada Bank Penerus/Bank yang ditunjuk (Nominated Bank). (Untuk Usance/UPAU, disertai Wesel Berjangka/Draft).</li><li><strong>Pemeriksaan & Pengiriman Dokumen:</strong> Bank Penerus/Nominated Bank memeriksa dokumen. Jika sesuai (atau sesuai instruksi), dokumen dikirim ke Bank Penerbit.</li><li><strong>Pemeriksaan Final & Pembayaran/Akseptasi:</strong> Bank Penerbit memeriksa dokumen.<ul><li>Jika <strong>Sight</strong> & comply: Bank Penerbit membayar segera.</li><li>Jika <strong>Usance</strong> & comply: Bank Penerbit mengaksep Wesel untuk dibayar saat jatuh tempo.</li><li>Jika <strong>UPAS</strong> & comply: Bank Pembayar/Financing Bank membayar Penjual segera, pembiayaan dimulai untuk Pembeli oleh Issuing/Financing Bank.</li><li>Jika <strong>UPAU</strong> & comply: Bank Penerbit mengaksep Wesel awal. Saat wesel awal jatuh tempo, Bank Pembayar/Financing Bank membayar Penjual, pembiayaan kedua dimulai untuk Pembeli oleh Issuing/Financing Bank.</li></ul></li><li><strong>Penyelesaian dengan Pembeli:</strong> Bank Penerbit menagih pembayaran dari Pembeli (saat pembayaran Sight, saat jatuh tempo Usance, atau saat jatuh tempo pembiayaan UPAS/UPAU).</li><li><strong>Penyerahan Dokumen ke Pembeli:</strong> Setelah pembayaran atau akseptasi (sesuai ketentuan), Bank Penerbit menyerahkan dokumen ke Pembeli untuk pengambilan barang.</li></ol>
+        </section>
+
+        <section id="pricing-skbdn" class="content-section">
+            <h2>Pricing SKBDN (Ilustrasi)</h2><p>Berikut adalah contoh ilustrasi biaya untuk layanan SKBDN. Biaya aktual dapat bervariasi tergantung negosiasi, jenis transaksi, dan kebijakan bank terkini.</p><div style="overflow-x:auto;"> <ul><li><strong>Biaya Penerbitan (Issuance Fee):</strong> Biasanya persentase dari nilai SKBDN (misal: 0.1% - 0.25% per kuartal atau periode) atau biaya minimum (misal: Rp 250.000). Dibayar oleh Applicant.</li><li><strong>Biaya Advising (Advising Fee):</strong> Biaya tetap untuk meneruskan SKBDN ke Beneficiary (misal: Rp 150.000 - Rp 300.000). Dibayar oleh Beneficiary atau Applicant.</li><li><strong>Biaya Pemeriksaan Dokumen/Negosiasi (Handling/Negotiation Fee):</strong> Persentase dari nilai dokumen (misal: 0.1% - 0.2%) atau biaya minimum (misal: Rp 200.000). Dibayar oleh Beneficiary (umumnya).</li><li><strong>Biaya Akseptasi (Acceptance Commission):</strong> Untuk SKBDN Usance/UPAU, persentase per periode usance (mirip biaya penerbitan). Dibayar oleh Applicant.</li><li><strong>Biaya Diskonto (Discount Charge):</strong> Jika Beneficiary mendiskontokan wesel Usance/UPAU, dikenakan bunga diskonto. Dibayar oleh Beneficiary.</li><li><strong>Biaya Amandemen (Amendment Fee):</strong> Biaya tetap per perubahan SKBDN (misal: Rp 200.000). Dibayar oleh pihak yang meminta perubahan.</li><li><strong>Biaya Komunikasi (Telex/SWIFT Fee):</strong> Biaya tetap per pengiriman pesan (misal: Rp 100.000 - Rp 250.000).</li><li><strong>Biaya Pembiayaan UPAS/UPAU:</strong> Margin/Bunga pembiayaan atas fasilitas yang digunakan. Dibayar oleh Applicant.</li></ul></div><p><em>*Angka di atas hanyalah ilustrasi. Silakan hubungi Account Officer atau tim Trade Finance kami untuk mendapatkan struktur biaya yang akurat sesuai kebutuhan Anda.</em></p>
+        </section>
+
+        <section id="pricing-sblc" class="content-section">
+            <h2>Pricing SBLC (Ilustrasi)</h2><p>Berikut adalah contoh ilustrasi biaya untuk layanan SBLC. Biaya aktual bergantung pada risiko, tenor, nilai jaminan, dan negosiasi.</p><div style="overflow-x:auto;"> <ul><li><strong>Provisi/Komisi Penerbitan (Issuance Commission/Guarantee Fee):</strong> Biaya utama, biasanya persentase per tahun dari nilai SBLC (misal: 1% - 3% p.a.) atau biaya minimum. Dibayar oleh Applicant, seringkali di muka per periode (kuartal/tahunan).</li><li><strong>Biaya Administrasi/Penerbitan Awal:</strong> Biaya tetap saat SBLC pertama kali diterbitkan (misal: Rp 500.000).</li><li><strong>Biaya Amandemen (Amendment Fee):</strong> Biaya tetap per perubahan SBLC (misal: Rp 300.000). Dibayar oleh Applicant.</li><li><strong>Biaya Klaim (Claim Handling Fee):</strong> Jika terjadi klaim, bank dapat mengenakan biaya untuk proses penanganan klaim. Dibayar oleh Applicant atau dipotong dari pembayaran klaim.</li><li><strong>Biaya Komunikasi (Telex/SWIFT Fee):</strong> Biaya tetap per pengiriman pesan terkait SBLC.</li></ul></div><p><em>*Angka di atas hanyalah ilustrasi. Risiko proyek/transaksi yang dijamin sangat mempengaruhi besaran provisi. Hubungi kami untuk penawaran spesifik.</em></p>
+        </section>
+
+        <section id="simulasi-biaya" class="content-section">
+            <h2>Simulasi Biaya</h2><p>Ingin mendapatkan perkiraan biaya untuk transaksi SKBDN atau SBLC Anda? Gunakan tautan berikut untuk mengakses alat simulasi kami atau hubungi tim kami untuk perhitungan yang lebih detail.</p><a href="#contact" class="simulasi-button">Hubungi Kami untuk Simulasi</a> <p>Hasil simulasi bersifat perkiraan dan tidak mengikat. Konsultasikan dengan tim Trade Finance kami untuk mendapatkan penawaran resmi.</p>
+        </section>
+
+        <section id="file-download-skbdn" class="content-section">
+            <h2>File Download SKBDN</h2><p>Unduh formulir dan dokumen terkait SKBDN di sini.</p><h3>File Promosi</h3><ul><li><a href="#" download>Brosur Produk SKBDN</a></li> </ul><h3>Formulir & Dokumen Penerbitan SKBDN (Applicant)</h3><ul><li><a href="https://docs.google.com/document/d/1Pb1fIIsaJb3APKrfIxTFR-5aviz6QiLs/edit#heading=h.gjdgxs" target="_blank" rel="noopener noreferrer">Formulir Aplikasi Penerbitan SKBDN</a></li><li><a href="https://docs.google.com/document/d/11uJIXpCZNzOONnk99rTVfnwDCMkCb78a/edit" target="_blank" rel="noopener noreferrer">Syarat Umum Penerbitan SKBDN (Contoh)</a></li><li><a href="https://docs.google.com/document/d/1enMHjb0Sa9VOMiWAWcZ6PAzbbIV71G2L/edit#heading=h.gjdgxs" target="_blank" rel="noopener noreferrer">Surat Kuasa Pendebetan Rekening (Contoh)</a></li><li><a href="https://docs.google.com/document/d/10F-oi3BJsrEoGQy4wTo47PRO8SEbrL4a/edit#heading=h.gjdgxs" target="_blank" rel="noopener noreferrer">Perjanjian Penerbitan SKBDN (Contoh)</a></li><li><a href="https://docs.google.com/document/d/1KCEAsdQAkmybQVFKwpbfxBRuKPfPcW9j/edit" target="_blank" rel="noopener noreferrer">Form Spesimen Tanda Tangan</a></li></ul><h3>Dokumen Terkait Penerimaan SKBDN (Beneficiary)</h3><ul><li><a href="#" download>Formulir Penyerahan Dokumen SKBDN (Contoh)</a></li><li><a href="#" download>Surat Pengantar Penyerahan Dokumen (Contoh)</a></li><li><a href="#" download>Formulir Permohonan Diskonto Wesel SKBDN (Contoh)</a></li> </ul>
+        </section>
+
+        <section id="file-download-sblc" class="content-section">
+            <h2>File Download SBLC</h2><p>Unduh formulir dan dokumen terkait SBLC di sini.</p><h3>Formulir & Dokumen Penerbitan SBLC (Applicant)</h3><ul><li><a href="#" download>Brosur Produk SBLC</a></li><li><a href="#" download>Formulir Aplikasi Penerbitan SBLC</a></li><li><a href="#" download>Syarat Umum Penerbitan SBLC (Contoh)</a></li><li><a href="#" download>Perjanjian Penerbitan SBLC/Indemnity (Contoh)</a></li></ul><h3>Dokumen Terkait Klaim SBLC (Beneficiary)</h3><ul><li><a href="#" download>Formulir Tuntutan Klaim SBLC (Contoh)</a></li></ul>
+        </section>
+
+        <section id="contact" class="cta-section content-section">
+            <h2>Hubungi Kami Sekarang</h2><p>Siap untuk mempermudah transaksi perdagangan domestik Anda dengan solusi SKBDN dan SBLC Syariah? Hubungi tim Trade Finance kami hari ini untuk konsultasi gratis!</p><a href="mailto:tradefinance.syariah@bjbsyariah.co.id" class="simulasi-button">Hubungi Tim Trade Finance</a>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 PT Bank Pembangunan Daerah Jawa Barat dan Banten Syariah (Bank BJB Syariah). Hak Cipta Dilindungi.</p>
+    </footer>
+
+    <script>
+        // Add data-label attributes to table cells for responsive view
+        function addTableLabels() {
+            const tables = document.querySelectorAll('table');
+            tables.forEach(table => {
+                if (!table.querySelector('thead')) return;
+                const headers = Array.from(table.querySelectorAll('thead th')).map(th => th.textContent.trim());
+                if (headers.length === 0) return;
+                const rows = table.querySelectorAll('tbody tr');
+                rows.forEach(row => {
+                    const cells = row.querySelectorAll('td');
+                    cells.forEach((cell, index) => {
+                        if (headers[index]) {
+                             cell.setAttribute('data-label', headers[index]);
+                        }
+                    });
+                });
+            });
+        }
+
+        // Sticky Navigation Logic
+        function stickyNav() {
+            const nav = document.getElementById('main-nav');
+            const headerContent = document.querySelector('.header-content');
+            let navHeight = 0;
+            if (!nav || !headerContent) return;
+             navHeight = nav.offsetHeight;
+            const stickyPoint = headerContent.offsetTop + headerContent.offsetHeight;
+
+            if (window.pageYOffset > stickyPoint) {
+                if (!nav.classList.contains('nav-fixed')) {
+                    nav.classList.add('nav-fixed');
+                    if(navHeight > 0) {
+                         requestAnimationFrame(() => {
+                            document.body.style.paddingTop = navHeight + 'px';
+                         });
+                    }
+                }
+            } else {
+                if (nav.classList.contains('nav-fixed')) {
+                    nav.classList.remove('nav-fixed');
+                     requestAnimationFrame(() => {
+                        document.body.style.paddingTop = '0';
+                     });
+                }
+            }
+        }
+
+        // Multi-page Simulation Logic
+        function handleNavigation(event) {
+             const link = event.target.closest('a[data-target]');
+             if (!link) return;
+
+             event.preventDefault();
+
+             const targetId = link.dataset.target;
+             const allContentSections = document.querySelectorAll('main > section.content-section');
+             const targetSection = document.getElementById(targetId);
+             const groupSections = document.querySelectorAll('main > section[id$="-group"]'); // Select group placeholders
+
+             allContentSections.forEach(section => section.classList.remove('active-section'));
+             groupSections.forEach(section => section.classList.remove('active-section'));
+
+
+             if (targetId.endsWith('-group')) {
+                 let firstInSectionId = '';
+                 switch (targetId) {
+                     case 'penjelasan-produk-group': firstInSectionId = 'penjelasan-skbdn'; break;
+                     case 'persyaratan-dokumen-group': firstInSectionId = 'persyaratan-dokumen-skbdn'; break;
+                     case 'skema-alur-transaksi-group': firstInSectionId = 'skema-alur-transaksi-skbdn-sight'; break;
+                     case 'pricing-group': firstInSectionId = 'pricing-skbdn'; break;
+                     case 'file-download-group': firstInSectionId = 'file-download-skbdn'; break;
+                     case 'simulasi-biaya': firstInSectionId = 'simulasi-biaya'; break;
+                     case 'target-nasabah': firstInSectionId = 'target-nasabah'; break; // Handle direct click on Target Nasabah
+                     default: firstInSectionId = 'penjelasan-skbdn';
+                 }
+                 const firstSection = document.getElementById(firstInSectionId);
+                 if (firstSection && firstSection.classList.contains('content-section')) {
+                     firstSection.classList.add('active-section');
+                     if (window.pageYOffset > 100) {
+                        document.querySelector('main').scrollIntoView({ behavior: 'smooth', block: 'start' });
+                     }
+                 } else {
+                      console.warn(`Default section for group "${targetId}" not found.`);
+                      const veryFirstSection = document.querySelector('main > section.content-section');
+                      if (veryFirstSection) veryFirstSection.classList.add('active-section');
+                 }
+             } else if (targetSection && targetSection.classList.contains('content-section')) {
+                 targetSection.classList.add('active-section');
+                 if (window.pageYOffset > 100) {
+                    document.querySelector('main').scrollIntoView({ behavior: 'smooth', block: 'start' });
+                 }
+             } else {
+                 console.warn(`Target section with ID "${targetId}" not found or not a content section.`);
+                 const firstSection = document.querySelector('main > section.content-section');
+                 if (firstSection) firstSection.classList.add('active-section');
+             }
+        }
+
+
+        // Initialize Page and Event Listeners
+        window.addEventListener('load', () => {
+            addTableLabels();
+            setTimeout(stickyNav, 100);
+
+            const navElement = document.getElementById('main-nav');
+            if (navElement) {
+                 navElement.addEventListener('click', handleNavigation);
+            }
+
+            const defaultSectionId = 'penjelasan-skbdn'; // Default section
+            const defaultSection = document.getElementById(defaultSectionId);
+            if (defaultSection && defaultSection.classList.contains('content-section')) {
+                defaultSection.classList.add('active-section');
+            } else {
+                 const firstSection = document.querySelector('main > section.content-section');
+                 if (firstSection) {
+                     firstSection.classList.add('active-section');
+                 }
+            }
+        });
+
+        window.addEventListener('scroll', stickyNav);
+
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => {
+                const nav = document.getElementById('main-nav');
+                 if (nav && nav.classList.contains('nav-fixed')) {
+                     let navHeight = nav.offsetHeight;
+                     if(navHeight > 0){
+                         requestAnimationFrame(() => {
+                             document.body.style.paddingTop = navHeight + 'px';
+                         });
+                     }
+                 }
+                 stickyNav();
+            }, 250);
+        });
+
+    </script>
+
+</body>
+</html>
